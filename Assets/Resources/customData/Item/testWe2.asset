@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae986c893256600489c3682b2034edb4, type: 3}
+  m_Name: testWe2
+  m_EditorClassIdentifier: 
+  id: 256
+  icon: {fileID: 21300000, guid: 0b83ebd781827014199d0084aa71f762, type: 3}
+  pickupScale: 0.25
+  displayName: 
+  tag: 
+  sellable: 1
+  buyCost: 22
+  sellCost: 23
+  sellDescription: 
+  strengthMulti: 0
+  spellMulti: 0
+  attackSpeedIncreaseMulti: 0
+  spellSpeedIncreaseMulti: 0
+  walkSpeedMulti: 0
+  strengthFixed: 0
+  spellFixed: 0

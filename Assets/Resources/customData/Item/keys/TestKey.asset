@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93af70d628311e44a312eee5c72d145, type: 3}
+  m_Name: TestKey
+  m_EditorClassIdentifier: 
+  id: 257
+  icon: {fileID: 21300000, guid: 00c524dc327414847b8674df182c80ed, type: 3}
+  pickupScale: 0.25
+  displayName: testKey
+  tag: key
+  sellable: 1
+  buyCost: 50
+  sellCost: 20
+  sellDescription: 
+  instructionTag: Test me
+  keyId: 300

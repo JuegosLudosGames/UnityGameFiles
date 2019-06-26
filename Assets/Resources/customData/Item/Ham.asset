@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf65a33c1fbb4434da2eb84bc3bce52b, type: 3}
+  m_Name: Ham
+  m_EditorClassIdentifier: 
+  id: 322
+  icon: {fileID: 21300000, guid: 1618cb37bcd5144fd923b9697be57d63, type: 3}
+  pickupScale: 1
+  displayName: HAM
+  tag: 
+  sellable: 1
+  buyCost: 100
+  sellCost: 26
+  sellDescription: 
+  healthRefill: 0
+  manaRefill: 0
+  permHealthIncrease: 0
+  permManaIncrease: 0
+  permStrengthIncrease: 0
+  permSpellIncrease: 0
