@@ -50,11 +50,13 @@ namespace JLG.gift.cSharp.background.scene.background {
 		//private AsyncOperation currentLoad;
 		public void selectBuild(BuildData[] bd) {
 			BuildSelection.gameObject.SetActive(true);
-			GameObject con = BuildSelection.contents;
+			//GameObject con = BuildSelection.contents;
 
-			foreach (BuildData b in bd) {
-				BuildSelectionListing bs = GameObject.Instantiate(GlobalItems.instance.BuildSelectionListingPrefab, con.transform).GetComponent<BuildSelectionListing>();
-			}
+			//foreach (BuildData b in bd) {
+			//	BuildSelectionListing bs = GameObject.Instantiate(GlobalItems.instance.BuildSelectionListingPrefab, con.transform).GetComponent<BuildSelectionListing>();
+			//}
+
+
 
 		}
 

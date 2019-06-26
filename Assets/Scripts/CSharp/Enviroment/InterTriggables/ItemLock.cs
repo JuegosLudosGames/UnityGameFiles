@@ -22,7 +22,7 @@ namespace JLG.gift.cSharp.enviroment.intertriggerables {
 				Inventory inv = PlayerData.instance.inventory;
 				ItemStack s = inv.getItemInSlot(Inventory.HotbarSlotToSlot(invSys.selectedSlot));
 
-				if (s.item is KeyItem) {
+				if ((s is null) && s.item is KeyItem) {
 					KeyItem k = s.item as KeyItem;
 					if (keyIds.Contains(k)) {
 						//clear the slot
