@@ -15,7 +15,7 @@ namespace JLG.gift.cSharp.background.scene.background {
 		public GameObject ItemLockItemMorePrefab;
 		public GameObject ItemListingPrefab;
 		public GameObject BuildSelListingPrefab;
-		public GameObject BuildSelectionListingPrefab;
+		public GameObject EnemyInstancePrefab;
 
 		[Header("AssetRef")]
 		[SerializeField]

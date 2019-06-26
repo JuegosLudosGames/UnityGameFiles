@@ -368,19 +368,19 @@ namespace JLG.gift.cSharp.entity.enemy {
 				/*Coward*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketShootInRange), typeof(PacketMoveToPlayer), typeof(PacketRoam)}, 
-							   new object[] {1.4f, 1.5f, null, null, 1, 1.6f, 5.0f}, 
+							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 5.0f}, 
 							   new object[] {10.0f, 3.0f, 2.0f }
 							   ),
 				/*Rusher*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketMoveToPlayer), typeof(PacketRoam)},
-							   new object[] {1.4f, 1.5f, null, 1.6f, 5.0f},
+							   new object[] {1.4f, 2f, null, 1.6f, 5.0f},
 							   new object[] {20.0f, 2.0f, 1.0f }
 							   ),
 				/*Neutral*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketShootInRange), typeof(PacketMoveToPlayer), typeof(PacketRoam)},
-							   new object[] {1.4f, 1.5f, null, null, 1, 1.6f, 5.0f},
+							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 5.0f},
 							   new object[] {15.0f, 2.5f, 1.5f }
 							   ),
 			};

@@ -7,12 +7,13 @@ namespace JLG.gift.cSharp.enviroment.triggerable {
 
 		public float triggerDistance;
 
-		private bool act = true;
+		private bool act2 = true;
 
 		void Update() {
-			if (act) {
+			if (act2) {
 				if (isPlayerInRange()) {
-					act = !triggerOnce;
+					act2 = !triggerOnce;
+					triggerAll();
 				}
 			}
 		}

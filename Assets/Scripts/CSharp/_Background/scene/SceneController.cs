@@ -25,6 +25,7 @@ namespace JLG.gift.cSharp.background.scene {
 		public SavePoint[] saveSpawns;
 		public ISceneObjectData[] SceneObjectStorables;
 		public GameObject[] toTriggerOnStart;
+		public GameObject EnemyFolder;
 
 		// Start is called before the first frame update
 		void Start() {

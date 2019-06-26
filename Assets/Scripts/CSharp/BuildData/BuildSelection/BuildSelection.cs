@@ -16,8 +16,9 @@ namespace JLG.gift.cSharp.buildData {
 				listing.icon.sprite = b.Icon;
 				listing.icon.color = b.IconColor;
 				listing.description.updateText(b.Description);
-				this.returnTo = returnTo;
+				
 			}
+			this.returnTo = returnTo;
 		}
 
 	}

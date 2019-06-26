@@ -670,8 +670,10 @@ MonoBehaviour:
     type: 3}
   ItemListingPrefab: {fileID: 6175543693138891442, guid: 60893b4be7b07ef48b4f1a20cae8e783,
     type: 3}
-  BuildSelListingPrefab: {fileID: 0}
-  BuildSelectionListingPrefab: {fileID: 0}
+  BuildSelListingPrefab: {fileID: 1877185818418574485, guid: 98cc544b2a1922a42955df8899e79fc4,
+    type: 3}
+  EnemyInstancePrefab: {fileID: 266128212819499568, guid: 56ef998fc27a5234883032c79f38af4f,
+    type: 3}
   items:
   - {fileID: 11400000, guid: cc0eb666d3780dc41968f82ba4805b4b, type: 2}
   - {fileID: 11400000, guid: 9accf5034b6addd41a95cfb4a1b103aa, type: 2}

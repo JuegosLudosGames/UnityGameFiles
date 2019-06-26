@@ -25,10 +25,17 @@ namespace JLG.gift.cSharp.entity.ai.aiPackets {
 			//if there is an enemy too close
 			if (ce != null) {
 				//run in opposite direction
-				state = new StateWalkTo(-ce.transform.position);
+				//state = new StateWalkTo(-ce.transform.position);
+				state = new StateWalkTo(reflectAcrossVerticalPlane(ce.transform.position, en.transform.position));
 			}
 
 			return state;
 		}
+
+		private Vector3 reflectAcrossVerticalPlane(Vector3 point, Vector3 planeLoc) {
+			float newX = planeLoc.x - (point.x - planeLoc.x);
+			return new Vector3(newX, planeLoc.y, planeLoc.z);
+		}
+
 	}
 }
