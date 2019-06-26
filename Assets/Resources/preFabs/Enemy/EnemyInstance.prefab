@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266128212819499571}
   - component: {fileID: 290604540994131918}
+  - component: {fileID: 1720448003977747475}
   - component: {fileID: 266128212819499575}
   - component: {fileID: 266128212819499573}
   - component: {fileID: 266128212819499570}
@@ -29,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266128212819499568}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.8, y: -3.07, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 266128213640753963}
@@ -80,8 +81,39 @@ MonoBehaviour:
   magic1: {fileID: 11400000, guid: 0d23f25b31b9d7d488ca77bfb602ece5, type: 2}
   magic2: {fileID: 11400000, guid: 56d29ab4a6690c94e883d16031991ddf, type: 2}
   persona: 0
+  target: {x: 0, y: 0, z: 0}
+  nextWayPointDistance: 0.8
+  timeToAllowRecalc: 0
   timeToForget: 0
   damagedCool: 0
+--- !u!114 &1720448003977747475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266128212819499568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!70 &266128212819499575
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -95,7 +127,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12105274, y: -0.19454932}
+  m_Offset: {x: -0.12105274, y: 0.51}
   m_Size: {x: 1.0706768, y: 2.0981216}
   m_Direction: 0
 --- !u!50 &266128212819499573
@@ -315,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266128213640753960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 266128214305285496}

@@ -32,25 +32,28 @@ namespace JLG.gift.cSharp.entity.ai.aiPackets {
 			} else {
 				//no we are not too far
 				//checks if it wants to go right (1 in 25 chance)
-				bool goRight = (Random.Range(0, 1) * 25) == 1 ? !isRightPrev : isRightPrev; 
+				bool goRight = (Random.Range(0, 1) * 25) == 1 ? !isRightPrev : isRightPrev;
 
-				//creates layer mask for overlap check
-				int layerMask = (1 << 9) | (1 << 11);
-				bool Wallpresent = false; //bool value if a wall is in front
+				////creates layer mask for overlap check
+				//int layerMask = (1 << 9) | (1 << 11);
+				//bool Wallpresent = false; //bool value if a wall is in front
 
-				//check if should jump
-				if(Physics2D.OverlapCircle(new Vector2(en.transform.position.x + (goRight ? 0.8f : -0.8f), en.transform.position.y), 1,layerMask) != null) {
-					//check if unable bc too tall if too tall, do not jump over it, otherwise jump
-					if (Physics2D.OverlapCircle(new Vector2(en.transform.position.x + (goRight ? 0.8f : -0.8f), en.transform.position.y + 2f), 1, layerMask) != null) {
-						goRight = !goRight;
-					} else {
-						Wallpresent = true;
-					}
-				}
+				////check if should jump
+				//if(Physics2D.OverlapCircle(new Vector2(en.transform.position.x + (goRight ? 0.8f : -0.8f), en.transform.position.y), 1,layerMask) != null) {
+				//	//check if unable bc too tall if too tall, do not jump over it, otherwise jump
+				//	if (Physics2D.OverlapCircle(new Vector2(en.transform.position.x + (goRight ? 0.8f : -0.8f), en.transform.position.y + 2f), 1, layerMask) != null) {
+				//		goRight = !goRight;
+				//	} else {
+				//		Wallpresent = true;
+				//	}
+				//}
 
-				//determines direction or jump area
-				Vector3 to = new Vector3(Wallpresent ? 0 : en.transform.position.x + (goRight ? 0.5f : -0.5f), Wallpresent ? en.transform.position.y + 5 : en.transform.position.y);
-				//sets state
+				////determines direction or jump area
+				//Vector3 to = new Vector3(Wallpresent ? 0 : en.transform.position.x + (goRight ? 0.5f : -0.5f), Wallpresent ? en.transform.position.y + 5 : en.transform.position.y);
+				////sets state
+
+				Vector3 to = new Vector3(en.transform.position.x + (goRight ? wander : -wander), en.transform.position.y);
+
 				state = new StateWalkTo(to);
 				//sets previous direction variable
 				isRightPrev = goRight;

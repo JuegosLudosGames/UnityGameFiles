@@ -33,7 +33,8 @@ namespace JLG.gift.cSharp.entity.ai.aiPackets {
 		}
 
 		private Vector3 reflectAcrossVerticalPlane(Vector3 point, Vector3 planeLoc) {
-			float newX = planeLoc.x - (point.x - planeLoc.x);
+			//float newX = planeLoc.x - (point.x - planeLoc.x);
+			float newX = (point.x < planeLoc.x) ? minD : -minD;
 			return new Vector3(newX, planeLoc.y, planeLoc.z);
 		}
 

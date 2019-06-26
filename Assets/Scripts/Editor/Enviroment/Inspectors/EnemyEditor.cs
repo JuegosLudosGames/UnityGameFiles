@@ -91,6 +91,10 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 					EditorGUILayout.Toggle("Was Damaged", e.wasDamaged);
 					EditorGUILayout.FloatField("Damaged Cooldown", e.damagedCool);
 					EditorGUILayout.Space();
+					EditorGUILayout.TextArea("Packet Running", e.curPack == null? "None" : e.curPack.ToString());
+					EditorGUILayout.Space();
+					EditorGUILayout.TextArea("State Running", e.curState == null ? "None" : e.curState.ToString());
+					EditorGUILayout.Space();
 
 					EditorGUI.EndDisabledGroup();
 					EditorGUI.indentLevel--;

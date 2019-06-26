@@ -6,6 +6,7 @@ using JLG.gift.cSharp.entity.ai.aistate;
 using JLG.gift.cSharp.attackData.spells.spelltype;
 using JLG.gift.cSharp.inventory;
 using static JLG.gift.cSharp.entity.enemy.Enemy.Personality;
+using Pathfinding;
 
 namespace JLG.gift.cSharp.entity.enemy {
 
@@ -26,6 +27,8 @@ namespace JLG.gift.cSharp.entity.enemy {
 		[HideInInspector]
 		public float attackReactionCooldown = 1.5f;
 		public float gapCheck = 1.5f;
+		public AiPacket curPack;
+		public AiState curState;
 
 		[Header("Basic Attack")]
 		public float slashAttackDamage = 0.0f;
@@ -34,6 +37,18 @@ namespace JLG.gift.cSharp.entity.enemy {
 		public Spell magic1;
 		public Spell magic2;
 		public Personalities persona;
+
+		//Astar
+		public Vector3 target;
+		public float nextWayPointDistance = 1.3f;
+		public static float reCalculateTime = 0.5f;
+		public float timeToAllowRecalc = 0.0f;
+
+		Path path;
+		int currentWaypoint = 0;
+		bool reachedEndOfPath = false;
+
+		Seeker seeker;
 
 		//used variables
 		protected List<AiPacket> packets = new List<AiPacket>();
@@ -64,6 +79,7 @@ namespace JLG.gift.cSharp.entity.enemy {
 
 			//gets all required components
 			dropper = GetComponent<ItemDropper>();
+			seeker = GetComponent<Seeker>();
 
 			//spoint = Vector3.zero;
 			//sets the spawnpoint to large number before setting
@@ -79,6 +95,8 @@ namespace JLG.gift.cSharp.entity.enemy {
 			forgetTime = (float) o[0];
 			damageReactionCooldown = (float) o[1];
 			attackReactionCooldown = (float) o[2];
+
+			//seeker.StartPath(transform.position, Entity.player.transform.position, onPathComplete);
 
 			//calls enemy start sequence
 			//onEnemyStart();
@@ -132,34 +150,53 @@ namespace JLG.gift.cSharp.entity.enemy {
 					wasDamaged = false;
 			}
 
+			if (timeToAllowRecalc > 0) {
+				timeToAllowRecalc -= Time.deltaTime;
+			}
+
 			//gets wanted state
 			AiState state = getAiState();
+			curState = state;
+
+			//Debug.Log(state);
 
 			//checks states
 			if (state is StateWalkTo) {
 				//its a walking state, get object
-				StateWalkTo s = (StateWalkTo)state;
 
-				//gets relative Vector of point
-				Vector3 relative = s.pos - transform.position;
+				if (timeToAllowRecalc <= 0) {
 
-				//should we jump? High relative position and a jumpable wall or gab present
-				if (relative.y > 0.2 || isGapOrWallPresent()) {
-					//jump
-					jump(jumpStrength);
+					StateWalkTo s = (StateWalkTo)state;
+
+					//gets relative Vector of point
+					//Vector3 relative = s.pos - transform.position;
+
+					if (seeker.IsDone()) {
+						seeker.StartPath(transform.position, s.pos, onPathComplete);
+					}
+
+					timeToAllowRecalc = reCalculateTime;
+
+					////should we jump? High relative position and a jumpable wall or gab present
+					//if (relative.y > 0.2 || isGapOrWallPresent()) {
+					//	//jump
+					//	jump(jumpStrength);
+					//}
+					////should go right
+					//if (relative.x > 0) {
+					//	//move to right with speed
+					//	movex(speed);
+					//} else if (relative.x < 0) {
+					//	//otherwise move left with speed
+					//	movex(-speed);
+					//}
+
 				}
-				//should go right
-				if (relative.x > 0) {
-					//move to right with speed
-					movex(speed);
-				} else if (relative.x < 0) {
-					//otherwise move left with speed
-					movex(-speed);
-				}
-			} else {
+
+			} //else {
 				//if not walking state, walk with 0 speed
-				movex(0);
-			}
+				//movex(0);
+			//}
 
 			//are we attacking?
 			if (state is StatePhysicalAttack) {
@@ -183,6 +220,38 @@ namespace JLG.gift.cSharp.entity.enemy {
 				shoot(s.spell, s.num, 0, 1);
 				//trigger animation
 				modelAnimator.SetTrigger("Magic");
+			}
+
+			if (path != null) {
+
+				if (currentWaypoint >= path.vectorPath.Count) {
+					reachedEndOfPath = true;
+					movex(0);
+				} else {
+					reachedEndOfPath = false;
+
+					Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
+
+					//movex(direction.x * speed);
+
+					if (direction.x > 0) {
+						movex(speed);
+					} else if (direction.x < 0) {
+						movex(-speed);
+					}
+
+					if (direction.y >= 0.5f) {
+						jump(jumpStrength);
+					}
+
+					float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+
+					if (distance < nextWayPointDistance) {
+						currentWaypoint++;
+					}
+
+				}
+
 			}
 
 		}
@@ -241,11 +310,21 @@ namespace JLG.gift.cSharp.entity.enemy {
 				//is no state returned
 				if (state != null) {
 					//return state
+					curPack = pack;
 					return state;
 				}
 			}
 			//otherwise dont do anything
 			return null;
+		}
+
+		void onPathComplete(Path p) {
+
+			if (!p.error) {
+				path = p;
+				currentWaypoint = 0;
+			}
+
 		}
 
 		//damages entity
@@ -368,19 +447,19 @@ namespace JLG.gift.cSharp.entity.enemy {
 				/*Coward*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketShootInRange), typeof(PacketMoveToPlayer), typeof(PacketRoam)}, 
-							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 5.0f}, 
+							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 7.0f}, 
 							   new object[] {10.0f, 3.0f, 2.0f }
 							   ),
 				/*Rusher*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketMoveToPlayer), typeof(PacketRoam)},
-							   new object[] {1.4f, 2f, null, 1.6f, 5.0f},
+							   new object[] {1.4f, 2f, null, 1.6f, 7.0f},
 							   new object[] {20.0f, 2.0f, 1.0f }
 							   ),
 				/*Neutral*/ new Personality(
 							   new System.Type[] { typeof(PacketMoveAwayPlayer), typeof(PacketDistanceAlly), typeof(PacketAttackInRange),
 								   typeof(PacketShootInRange), typeof(PacketMoveToPlayer), typeof(PacketRoam)},
-							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 5.0f},
+							   new object[] {1.4f, 2f, null, null, 1, 1.6f, 7.0f},
 							   new object[] {15.0f, 2.5f, 1.5f }
 							   ),
 			};
