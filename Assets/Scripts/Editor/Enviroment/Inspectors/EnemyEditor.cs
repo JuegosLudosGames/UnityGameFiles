@@ -175,6 +175,11 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 				EditorGUI.indentLevel--;
 			}
 
+			//serializedObject.ApplyModifiedProperties();
+			if (GUI.changed) {
+				EditorUtility.SetDirty(e);
+			}
+
 		}
 	}
 }

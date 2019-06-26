@@ -56,10 +56,15 @@ MonoBehaviour:
   speed: 12.5
   jumpStrength: 10.5
   despawnTime: 5
-  maxHealth: 20
-  hitBox: {fileID: 0}
-  maxMana: 0
-  maxColliderTest: 20
+  maxHealth: 22.46
+  hitBox: {fileID: 266128214305285499}
+  maxMana: 10000
+  grounded: 0
+  isDespawning: 0
+  timeToDespawn: 0
+  timeBeforeNextAttack: 0
+  movementX: 0
+  forceY: 0
   fallMultiplier: 2.5
   baseDifficulty: 1
   aiDelay: 1
@@ -69,9 +74,14 @@ MonoBehaviour:
   damageReactionCooldown: 3
   attackReactionCooldown: 1.5
   gapCheck: 1.5
-  slashAttackDamage: 0
-  slashAttackRange: {fileID: 0}
-  slashAttackTime: 0
+  slashAttackDamage: 1.93
+  slashAttackRange: {fileID: 266128213394111628}
+  slashAttackTime: 1
+  magic1: {fileID: 11400000, guid: 0d23f25b31b9d7d488ca77bfb602ece5, type: 2}
+  magic2: {fileID: 11400000, guid: 56d29ab4a6690c94e883d16031991ddf, type: 2}
+  persona: 0
+  timeToForget: 0
+  damagedCool: 0
 --- !u!70 &266128212819499575
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
