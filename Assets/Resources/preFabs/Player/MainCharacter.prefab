@@ -254,8 +254,8 @@ MonoBehaviour:
   movementX: 0
   forceY: 0
   smoothingSpeed: 5.5
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 7
+  fallMultiplier: 4
+  lowJumpMultiplier: 10
   pickupRange: {fileID: 6612886993044477570}
   pickupRangeRadius: 0.75
   slashDamage: 5.84
