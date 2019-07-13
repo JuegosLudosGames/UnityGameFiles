@@ -22,6 +22,10 @@ namespace JLG.gift.cSharp.background.scene.background {
 		public GameObject saveIcon;
 		[SerializeField]
 		public BuildSelection BuildSelection;
+		[SerializeField]
+		public GameObject anybutton;
+		[SerializeField]
+		public GameObject loadInd;
 
 		//should instant load currently selected scene
 		//public bool loadSelected = false;
@@ -33,6 +37,8 @@ namespace JLG.gift.cSharp.background.scene.background {
 		public SceneData saveSceneData;
 		[HideInInspector]
 		public byte loadId;
+		[HideInInspector]
+		public bool loadComplete = false;
 
 		//public SceneAsset[] avaliableScenesForLoad;
 		//public SceneAsset firstLoad;
@@ -62,7 +68,9 @@ namespace JLG.gift.cSharp.background.scene.background {
 
 		public void startLoad() {
 			loadScreen.SetActive(true);
+			loadInd.SetActive(true);
 			loadSaveSceneData = true;
+			//isLoading = true;
 			SceneManager.UnloadSceneAsync(MainMenuController.instance.gameObject.scene);
 			AsyncHandler.instance.startAsyncTask(startLoadAsync());
 		}
@@ -87,10 +95,31 @@ namespace JLG.gift.cSharp.background.scene.background {
 			sendDirect(saveSceneData.SceneId);
 		}
 
+		void generateLoadScreen() {
+			loadScreen.SetActive(true);
+			loadInd.SetActive(true);
+		}
+
+		void LoadScreenComplete() {
+			loadInd.SetActive(false);
+			anybutton.SetActive(true);
+			loadComplete = true;
+		}
+
+		void LoadScreenClose() {
+			loadScreen.SetActive(false);
+			loadInd.SetActive(false);
+			anybutton.SetActive(false);
+			loadComplete = false;
+			Time.timeScale = 1;
+		}
+
 		// Start is called before the first frame update
 		void Start() {
 			instance = this;
 			loadScreen.SetActive(false);
+			loadInd.SetActive(false);
+			anybutton.SetActive(false);
 			saveIcon.SetActive(false);
 			BuildSelection.gameObject.SetActive(false);
 		}
@@ -104,6 +133,10 @@ namespace JLG.gift.cSharp.background.scene.background {
 			//	sendDirect(toLoad.name);
 			//	loadSelected = false;
 			//}
+			if (loadComplete && Input.anyKeyDown) {
+				SceneManager.SetActiveScene(activeScene);
+				LoadScreenClose();
+			}
 		}
 
 		//transfers from current scene to new scene
@@ -122,8 +155,9 @@ namespace JLG.gift.cSharp.background.scene.background {
 			SceneManager.sceneLoaded += onLoadComplete;
 
 			//turns on loadscreen
-			loadScreen.SetActive(true);
-			
+			//loadScreen.SetActive(true);
+			//loadInd.SetActive(true);
+			generateLoadScreen();
 		}
 
 		//sends direct from current scene unloading to old after loading
@@ -164,11 +198,16 @@ namespace JLG.gift.cSharp.background.scene.background {
 		void onLoadComplete(Scene scene, LoadSceneMode mode) {
 			//set active scene
 			activeScene = scene;
-			SceneManager.SetActiveScene(scene);
+			//SceneManager.SetActiveScene(scene);
 			//remove from scene load method list
 			SceneManager.sceneLoaded -= onLoadComplete;
 
-			loadScreen.SetActive(false);
+			//loadScreen.SetActive(false);
+			//loadInd.SetActive(false);
+			//anybutton.SetActive(true);
+			//loadComplete = true;
+			LoadScreenComplete();
+			Time.timeScale = 0;
 		}
 
 		//previous scene from a direct load
