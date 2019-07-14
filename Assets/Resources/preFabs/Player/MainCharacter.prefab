@@ -241,8 +241,8 @@ MonoBehaviour:
   verticalDrag: 0.95
   horizontalDrag: 0.5
   maxHeight: 5
-  speed: 12.5
-  jumpStrength: 15
+  speed: 14
+  jumpStrength: 20
   despawnTime: 5
   maxHealth: 24.79
   hitBox: {fileID: 7192688375701259456}
@@ -254,8 +254,8 @@ MonoBehaviour:
   movementX: 0
   forceY: 0
   smoothingSpeed: 5.5
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 7
+  fallMultiplier: 6
+  lowJumpMultiplier: 10
   pickupRange: {fileID: 6612886993044477570}
   pickupRangeRadius: 0.75
   slashDamage: 5.84

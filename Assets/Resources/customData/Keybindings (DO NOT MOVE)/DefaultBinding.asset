@@ -18,7 +18,7 @@ MonoBehaviour:
   Physical_Button: 106
   Magic1_Button: 107
   Magic2_Button: 108
-  UseItem_Button: 105
-  SwitchItemLeft_Button: 117
-  SwitchItemRight_Button: 111
-  InventoryToggle_Button: 101
+  UseItem_Button: 107
+  SwitchItemLeft_Button: 113
+  SwitchItemRight_Button: 101
+  InventoryToggle_Button: 102
