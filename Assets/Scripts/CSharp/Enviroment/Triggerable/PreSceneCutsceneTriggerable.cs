@@ -12,7 +12,7 @@ namespace JLG.gift.cSharp.enviroment.triggerable {
 	public class PreSceneCutsceneTriggerable : ITimeControlInteract, Triggerable {
 
 		public TimelineAsset[] timelines;
-		public TimelineAsset exitTimeLine;
+		//public TimelineAsset exitTimeLine;
 		[HideInInspector]
 		public int current;
 		[HideInInspector]
@@ -20,7 +20,7 @@ namespace JLG.gift.cSharp.enviroment.triggerable {
 		[HideInInspector]
 		public bool isWaiting = false;
 		[HideInInspector]
-		public bool isExiting = false;
+		//public bool isExiting = false;
 		public bool shouldContiue = true;
 
 		PlayableDirector director;
@@ -32,23 +32,24 @@ namespace JLG.gift.cSharp.enviroment.triggerable {
 
 		private void Update() {
 			//is waiting for user input and user gave input
-			if (isWaiting && Input.anyKeyDown) {
-				current++;
-				isWaiting = false;
-				//no more timelines are avaliable
-				if (current >= timelines.Length) {
-					//is there an exit timeline
-					if (exitTimeLine is null) {
-						//there isnt
-						endTime();
-					} else {
-						//there is
-						director.Play(exitTimeLine);
-					}
-				} else {
-					//there is more left
-					director.Play(timelines[current]);
-				}
+			if (director.state == PlayState.Paused && Input.anyKeyDown) {
+				//current++;
+				//isWaiting = false;
+				////no more timelines are avaliable
+				//if (current >= timelines.Length) {
+				//	//is there an exit timeline
+				//	if (exitTimeLine is null) {
+				//		//there isnt
+				//		endTime();
+				//	} else {
+				//		//there is
+				//		director.Play(exitTimeLine);
+				//	}
+				//} else {
+				//	//there is more left
+				//	director.Play(timelines[current]);
+				//}
+				director.Resume();
 			}
 		}
 
@@ -72,11 +73,16 @@ namespace JLG.gift.cSharp.enviroment.triggerable {
 
 		void onDirectorStopped(PlayableDirector d) {
 			if (isPlaying && director == d) {
-				isWaiting = true;
-			} else if (isExiting) {
-				isExiting = false;
-				endTime();
-			}
+				current++;
+				isWaiting = false;
+				//no more timelines are avaliable
+				if (current >= timelines.Length) {
+					endTime();
+				} else {
+					//there is more left
+					director.Play(timelines[current]);
+				}
+			} 
 		}
 
 		public override PlayableDirector getDirector() {

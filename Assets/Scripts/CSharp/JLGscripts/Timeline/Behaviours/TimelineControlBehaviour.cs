@@ -28,18 +28,18 @@ namespace JLG.gift.cSharp.jglScripts.timeline {
 			var preScene = playerData as ITimeControlInteract;
 
 			if (preScene == null) {
-				Debug.LogError("null 1");
+				Debug.LogError("Interaction Null");
 				return;
 			}
 
 			if (clip == null) {
-				Debug.LogError("null 2");
+				Debug.LogError("Clip Null");
 			}
 
 			PlayableDirector dir = preScene.getDirector();
 
 			if (dir == null) {
-				Debug.LogError("null 3");
+				Debug.LogError("Director Null");
 				return;
 			}
 
