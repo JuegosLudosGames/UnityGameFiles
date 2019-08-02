@@ -10,7 +10,7 @@ namespace JLG.gift.cSharp.jglScripts.timeline {
 	[Serializable]
 	public class TimelineControlBehaviour : PlayableBehaviour {
 
-		public static readonly double wiggle = 0.05;
+		private static readonly double wiggle = 0.05;
 
 		public bool shouldFreeze;
 		public bool shouldJump;

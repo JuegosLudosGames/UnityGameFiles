@@ -45,11 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelines: []
-  exitTimeLine: {fileID: 0}
   current: 0
   isPlaying: 0
   isWaiting: 0
-  isExiting: 0
   shouldContiue: 1
 --- !u!320 &5199161075676651554
 PlayableDirector:
@@ -66,9 +64,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 3048557505900285150, guid: b76254adbd57ddb4687ef7b9c680fff7, type: 2}
-    value: {fileID: 5199161075676651555}
-  - key: {fileID: 6254713781994576347, guid: b76254adbd57ddb4687ef7b9c680fff7, type: 2}
+  - key: {fileID: -8530158675670959124, guid: b76254adbd57ddb4687ef7b9c680fff7, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:

@@ -10,11 +10,20 @@ namespace JLG.gift.cSharp.jglScripts.timeline {
 
 		public ClipCaps clipCaps { get { return ClipCaps.None; } }
 
+		[NonSerialized]
+		public double start;
+		[NonSerialized]
+		public double end;
+
 		[SerializeField]
 		SetActiveBehaviour template;
 
 		public override Playable CreatePlayable(PlayableGraph graph, GameObject owner) {
-			return ScriptPlayable<SetActiveBehaviour>.Create(graph, template);
+			//return ScriptPlayable<SetActiveBehaviour>.Create(graph, template);
+			var playable = ScriptPlayable<SetActiveBehaviour>.Create(graph, template);
+			playable.GetBehaviour().clip = this;
+
+			return playable;
 		}
 	}
 }
