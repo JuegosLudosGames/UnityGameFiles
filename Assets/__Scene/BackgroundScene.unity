@@ -398,7 +398,7 @@ MonoBehaviour:
     objectData: []
   loadId: 0
   loadComplete: 0
-  firstLoad: _Kyle'sTestScene
+  firstLoad: _TestScene
 --- !u!4 &272450981
 Transform:
   m_ObjectHideFlags: 0
