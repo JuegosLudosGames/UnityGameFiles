@@ -26,6 +26,9 @@ namespace JLG.gift.cSharp.ui.overlay {
 
 		// Update is called once per frame
 		void Update() {
+			if (background == null || fillI == null)
+				return;
+
 			background.color = emptyColor;
 			background.sprite = (sourceImage == null) ? defaultImage : sourceImage;
 				
