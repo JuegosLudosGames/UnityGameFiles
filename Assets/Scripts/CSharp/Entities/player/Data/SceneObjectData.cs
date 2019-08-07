@@ -13,5 +13,10 @@ namespace JLG.gift.cSharp.background.scene {
 			objectId = 0;
 		}
 
+		public SceneObjectData(byte state, int id) {
+			this.state = state;
+			objectId = id;
+		}
+
 	}
 }

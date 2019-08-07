@@ -12,5 +12,6 @@ namespace JLG.gift.cSharp.SystemData {
 		public float MaxHealth;
 		public float MaxMana;
 		public int buildId;
+		public int savePointId;
 	}
 }

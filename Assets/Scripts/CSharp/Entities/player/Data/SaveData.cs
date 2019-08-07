@@ -70,14 +70,9 @@ namespace JLG.gift.cSharp.entity.player.data {
 		}
 
 		public void saveAndUnload(byte saveNum) {
-			//saveData(saveNum);
 			saveDataAsync(saveNum, unLoad);
 			unLoad();
 		}
-
-		//void onSaveFinish() {
-		//	unLoad();
-		//}
 
 		public void unLoad() {
 			loadedSave = null;
