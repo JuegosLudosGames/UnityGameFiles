@@ -195,7 +195,7 @@ namespace JLG.gift.cSharp.background.scene {
 
 		public void overYes() {
 			SaveData.deleteSave(toCon);
-			SaveData.createNew(toCon);
+			//SaveData.createNew(toCon);
 			overConfirm.SetActive(false);
 			startGameAtBeg();
 		}
