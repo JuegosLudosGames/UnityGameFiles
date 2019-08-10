@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="227c2be2-e0eb-4b83-a24e-601751b5255b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/customData/Keybindings (DO NOT MOVE)/DefaultBinding.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/customData/Keybindings (DO NOT MOVE)/DefaultBinding.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/preFabs/Player/MainCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/preFabs/Player/MainCharacter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__Scene/BackgroundScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scene/BackgroundScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__Scene/_TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__Scene/_TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityGameFiles/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityGameFiles/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/customData/SpellData/Fireball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/customData/SpellData/Fireball.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,24 +15,68 @@
     <session id="1535841284">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/CSharp/attackData/spells/spelltype/Spell.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <folding>
                 <marker date="1563055070034" expanded="false" signature="6:78" ph="..." />
-                <marker date="1563055070034" expanded="true" signature="134:1468" ph="{...}" />
                 <marker date="1563055070034" expanded="true" signature="281:1466" ph="{...}" />
                 <marker date="1563055070034" expanded="true" signature="592:648" ph="/* [SerializeField] ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/CSharp/_Background/scene/background/SceneBackground.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="129" column="33" lean-forward="true" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+              <folding>
+                <marker date="1563056531188" expanded="false" signature="6:247" ph="..." />
+                <marker date="1563056531188" expanded="true" signature="303:6119" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="351:6117" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="436:520" ph="/* the default bindings ... */" />
+                <marker date="1563056531188" expanded="true" signature="781:895" ph="/* should instant load currently selected scene ... */" />
+                <marker date="1563056531188" expanded="true" signature="1105:1183" ph="/* public SceneAsset[] avaliableScenesForLoad; ... */" />
+                <marker date="1563056531188" expanded="true" signature="1265:1291" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="1327:1358" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="1442:1746" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="1493:1739" ph="/* GameObject con = BuildSelection.contents; ... */" />
+                <marker date="1563056531188" expanded="true" signature="1774:2029" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2056:2233" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2271:2326" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2360:2555" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2416:2445" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2585:2649" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2679:2767" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="2794:2939" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="3007:3201" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="3256:3552" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="3261:3431" ph="/* checks if should instant load ... */" />
+                <marker date="1563056531188" expanded="true" signature="3473:3548" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="3656:4089" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="3976:4060" ph="/* turns on loadscreen ... */" />
+                <marker date="1563056531188" expanded="true" signature="4211:4437" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="4540:4762" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="4705:4758" ph="/* prevDir = current; ... */" />
+                <marker date="1563056531188" expanded="true" signature="4823:4975" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="5071:5248" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="5345:5696" ph="{...}" />
+                <marker date="1563056531188" expanded="true" signature="5396:5473" ph="/* SceneManager.SetActiveScene(scene); ... */" />
+                <marker date="1563056531188" expanded="true" signature="5525:5644" ph="/* loadScreen.SetActive(false); ... */" />
+                <marker date="1563056531188" expanded="true" signature="5857:6113" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -47,6 +89,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CSharp/attackData/spells/spelltype/Spell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CSharp/_Background/scene/background/SceneBackground.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -119,11 +162,12 @@
       <option name="presentableId" value="Default" />
       <updated>1563063976043</updated>
       <workItem from="1563063984757" duration="593000" />
+      <workItem from="1563215333203" duration="77000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="593000" />
+    <option name="totallyTimeSpent" value="670000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -137,17 +181,9 @@
   <component name="ToolWindowManager">
     <frame x="68" y="20" width="1400" height="776" extended-state="0" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25373134" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -155,12 +191,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,9 +231,50 @@
         <state>
           <folding>
             <marker date="1563055070034" expanded="false" signature="6:78" ph="..." />
-            <marker date="1563055070034" expanded="true" signature="134:1468" ph="{...}" />
             <marker date="1563055070034" expanded="true" signature="281:1466" ph="{...}" />
             <marker date="1563055070034" expanded="true" signature="592:648" ph="/* [SerializeField] ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/CSharp/_Background/scene/background/SceneBackground.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="129" column="33" lean-forward="true" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+          <folding>
+            <marker date="1563056531188" expanded="false" signature="6:247" ph="..." />
+            <marker date="1563056531188" expanded="true" signature="303:6119" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="351:6117" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="436:520" ph="/* the default bindings ... */" />
+            <marker date="1563056531188" expanded="true" signature="781:895" ph="/* should instant load currently selected scene ... */" />
+            <marker date="1563056531188" expanded="true" signature="1105:1183" ph="/* public SceneAsset[] avaliableScenesForLoad; ... */" />
+            <marker date="1563056531188" expanded="true" signature="1265:1291" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="1327:1358" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="1442:1746" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="1493:1739" ph="/* GameObject con = BuildSelection.contents; ... */" />
+            <marker date="1563056531188" expanded="true" signature="1774:2029" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2056:2233" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2271:2326" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2360:2555" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2416:2445" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2585:2649" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2679:2767" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="2794:2939" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="3007:3201" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="3256:3552" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="3261:3431" ph="/* checks if should instant load ... */" />
+            <marker date="1563056531188" expanded="true" signature="3473:3548" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="3656:4089" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="3976:4060" ph="/* turns on loadscreen ... */" />
+            <marker date="1563056531188" expanded="true" signature="4211:4437" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="4540:4762" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="4705:4758" ph="/* prevDir = current; ... */" />
+            <marker date="1563056531188" expanded="true" signature="4823:4975" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="5071:5248" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="5345:5696" ph="{...}" />
+            <marker date="1563056531188" expanded="true" signature="5396:5473" ph="/* SceneManager.SetActiveScene(scene); ... */" />
+            <marker date="1563056531188" expanded="true" signature="5525:5644" ph="/* loadScreen.SetActive(false); ... */" />
+            <marker date="1563056531188" expanded="true" signature="5857:6113" ph="{...}" />
           </folding>
         </state>
       </provider>

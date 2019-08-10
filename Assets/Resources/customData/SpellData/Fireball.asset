@@ -16,7 +16,7 @@ MonoBehaviour:
   range: 5
   lifeTime: 2
   damage: 5
-  speed: 6
+  speed: 10
   mana: 15
   singleOnly: 1
   preObject: {fileID: 8920510458249540893, guid: 4d0384b40db172e43a153879cac34709,
