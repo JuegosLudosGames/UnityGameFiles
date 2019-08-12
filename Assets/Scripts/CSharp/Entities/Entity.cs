@@ -142,8 +142,10 @@ namespace JLG.gift.cSharp.entity {
 			}
 
 			//does sound updates
-			if(SoundOptions.instance != null)
+			if (SoundOptions.instance != null) {
+				AudioS.volume = SoundOptions.instance.SfxVolume / 100;
 				AudioS.mute = SoundOptions.instance.sfxMute;
+			}
 
 			//does early update actions of entity
 			onEarlyUpdate();

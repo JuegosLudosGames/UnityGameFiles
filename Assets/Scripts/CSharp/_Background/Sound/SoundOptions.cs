@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using JLG.gift.cSharp.jglScripts.timeline;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace JLG.gift.cSharp.background.sound {
-	[RequireComponent(typeof(AudioSource))]
-	public class SoundOptions : MonoBehaviour {
+	[RequireComponent(typeof(AudioSource), typeof(PlayableDirector))]
+	public class SoundOptions : ITimeControlInteract {
 
 		public static SoundOptions instance;
 
@@ -14,10 +16,35 @@ namespace JLG.gift.cSharp.background.sound {
 		[Header("Options")]
 		private List<AudioClip> AttackOptions;
 
+		//public AudioListener listener;
 
 		public AudioClip attack {get { return AttackOptions[Random.Range(0, AttackOptions.Capacity)]; }}
 		public bool musicMute { get; private set; }
 		public bool sfxMute { get; private set; }
+
+		int masterVolume = 50;
+		public int MasterVolume {
+			get {
+				return masterVolume;
+			}
+			set {
+				masterVolume = value;
+				AudioListener.volume = masterVolume / 100;
+			}
+		}
+
+		int musicVolume = 50;
+		public int MusicVolume {
+			get {
+				return musicVolume;
+			}
+			set {
+				musicVolume = value;
+				source.volume = musicVolume / 100;
+			}
+			
+		}
+		public int SfxVolume = 50;
 
 		//music manager
 		[SerializeField]
@@ -28,10 +55,12 @@ namespace JLG.gift.cSharp.background.sound {
 
 
 		private bool fadeIn = false;	//are we fading music in
-		private bool fadeOut = false;	//are we fading music out
+		private bool fadeOut = false;   //are we fading music out
+		private bool endTrackLoop = false;
 		private AudioClip sendTo;		//clip that wil be sent to after fade
 
-		private AudioSource source;		//source for background music
+		private AudioSource source;     //source for background music
+		private PlayableDirector director;
 
 		private void Start() {
 			//sets current instance 
@@ -44,6 +73,8 @@ namespace JLG.gift.cSharp.background.sound {
 			source.clip = defaultMusic;
 			//plays the clip
 			source.Play();
+
+
 		}
 
 		private void Update() {
@@ -98,6 +129,19 @@ namespace JLG.gift.cSharp.background.sound {
 				sfxMute = status;
 			} else if (type == SoundType.MUSIC) {
 				musicMute = status;
+			}
+		}
+
+		public override PlayableDirector getDirector() {
+			return director;
+		}
+
+		public override bool shouldContinueLoop() {
+			if (!endTrackLoop) {
+				return true;
+			} else {
+				endTrackLoop = false;
+				return false;
 			}
 		}
 

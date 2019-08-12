@@ -6,6 +6,8 @@ using JLG.gift.cSharp.background.input;
 using UnityEditor;
 using JLG.gift.cSharp.entity.player.data;
 using JLG.gift.cSharp.buildData;
+using JLG.gift.cSharp.SystemData;
+using JLG.gift.cSharp.background.video;
 
 namespace JLG.gift.cSharp.background.scene.background {
 	public class SceneBackground : MonoBehaviour {
@@ -61,38 +63,70 @@ namespace JLG.gift.cSharp.background.scene.background {
 			//foreach (BuildData b in bd) {
 			//	BuildSelectionListing bs = GameObject.Instantiate(GlobalItems.instance.BuildSelectionListingPrefab, con.transform).GetComponent<BuildSelectionListing>();
 			//}
-
-
-
 		}
 
-		public void startLoad() {
+		public void startLoad(byte num) {
 			loadScreen.SetActive(true);
 			loadInd.SetActive(true);
 			loadSaveSceneData = true;
+			new SystemData.SystemData(num);
 			//isLoading = true;
 			SceneManager.UnloadSceneAsync(MainMenuController.instance.gameObject.scene);
 			AsyncHandler.instance.startAsyncTask(startLoadAsync());
 		}
 
-		public void startNew() {
+		public void startNew(byte num) {
 			loadScreen.SetActive(true);
 			PlayerData.instance.startNew();
+			new SystemData.SystemData(num);
 			sendDirect(firstLoad);
 			SceneManager.UnloadSceneAsync(MainMenuController.instance.gameObject.scene);
 		}
 
 		public void setBackgroundActive() {
 			SceneManager.SetActiveScene(gameObject.scene);
-		} 
+		}
+
+		bool saveLoaded = false;
+		bool sceneLoaded = false;
 
 		IEnumerator startLoadAsync() {
+			saveLoaded = false;
+			sceneLoaded = false;
+			//foreach (var a in PlayerData.instance.startLoad()) {
+			//	yield return null;
+			//}
+			SystemData.SystemData.loadData.loadFromFileAsync(onSaveLoadComplete);
+			while (!saveLoaded) {
+				yield return null;
+			}
+
 			foreach (var a in PlayerData.instance.startLoad()) {
 				yield return null;
 			}
-			saveSceneData = SaveData.loadedSave.scene;
+
+			SceneSaveData.loadSceneDataAsync(onSceneLoadComplete, SystemData.SystemData.loadData.playerDat.sceneId);
+			//saveSceneData = SaveData.loadedSave.scene;
+			//saveSceneData = SceneSaveData.loadSceneDataAsync()
 			yield return null;
+			while (!sceneLoaded) {
+				yield return null;
+			}
 			sendDirect(saveSceneData.SceneId);
+		}
+
+		void onSceneLoadComplete(SceneObjectData[] data) {
+			saveSceneData = new SceneData();
+			saveSceneData.SceneId = SystemData.SystemData.loadData.playerDat.sceneId;
+			saveSceneData.SavePointId = SystemData.SystemData.loadData.playerDat.SavePointId;
+			saveSceneData.objectData = data;
+			sceneLoaded = true;
+			Debug.Log("Scene Loaded Successfully");
+		}
+
+		void onSaveLoadComplete() {
+			saveLoaded = true;
+			Debug.Log("File Loaded Successfully");
 		}
 
 		void generateLoadScreen() {
@@ -137,6 +171,10 @@ namespace JLG.gift.cSharp.background.scene.background {
 				SceneManager.SetActiveScene(activeScene);
 				LoadScreenClose();
 			}
+		}
+
+		public void updateFrameRate() {
+			Application.targetFrameRate = VideoOptions.instance.targetFps;
 		}
 
 		//transfers from current scene to new scene

@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/__Scene/_TestScene.unity
     guid: b9e6648983e08b6459038a08943970b8
   - enabled: 1
-    path: Assets/__Scene/_Kyle'sTestScene.unity
+    path: Assets/__Scene/_KylesTestScene.unity
     guid: 5b233449a107cf94f9f9ab24fe82c461
   m_configObjects: {}

@@ -18,6 +18,8 @@ namespace JLG.gift.cSharp.SystemData {
 		public DataBaseIO(byte saveNum) {
 			Debug.Log("Starting save data");
 			globalPath = Path.Combine(Application.persistentDataPath, "save" + saveNum);
+			this.saveNum = saveNum;
+			SqlSetupConnection(globalPath);
 			Debug.Log("save data Path: " + globalPath);
 		}
 
@@ -36,6 +38,15 @@ namespace JLG.gift.cSharp.SystemData {
 			return Directory.Exists(Path.Combine(Application.persistentDataPath, "save" + saveNum));
 		}
 
+		public static void createDirectorSchema(byte saveNum) {
+			Debug.Log("[SaveManager] Checking for Directory");
+			if (!doesSaveExist(saveNum)) {
+				Debug.Log("[SaveManager] Directory not found, creating");
+				Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "save" + saveNum));
+				Debug.Log("[SaveManager] Directory created for save " + saveNum.ToString());
+			}
+		}
+
 		//sql side
 		string dbPath;
 
@@ -45,12 +56,19 @@ namespace JLG.gift.cSharp.SystemData {
 
 		public void SqlSetupConnection(string path) {
 			Debug.Log("[Save Manager] [Sql] Preparing for SQLite Connection");
-			dbPath = Path.Combine(globalPath, "data.db");
+			dbPath = "URI=file:" + Path.Combine(globalPath, "data.db");
 			//createSchemas();
 		}
 
 		public void createSceneSchema(string scene) {
 			Debug.Log("[Save Manager] [Sql] creating Schema for Scene table \"" + scene + "\"");
+			Debug.Log("[Save Manager] [Sql] Checking for file");
+			if (!doesSqlDbExist()) {
+				Debug.Log("[Save Manager] [Sql] File not found, creating");
+				createDirectorSchema(saveNum);
+				SqliteConnection.CreateFile(Path.Combine(globalPath, "data.db"));
+				Debug.Log("[Save Manager] [Sql] File created");
+			}
 			using (var conn = new SqliteConnection(dbPath)) {
 				conn.Open();
 				Debug.Log("[Save Manager] [Sql] Connection opened");
@@ -70,8 +88,17 @@ namespace JLG.gift.cSharp.SystemData {
 			Debug.Log("[Save Manager] [Sql] Schema Created");
 		}
 
-		IEnumerator createSceneSchemaTask(string scene) {
+		IEnumerable createSceneSchemaTask(string scene) {
 			Debug.Log("[Save Manager] [Sql] creating Schema for Scene table \"" + scene + "\"");
+			Debug.Log("[Save Manager] [Sql] Checking for file");
+			if (!doesSqlDbExist()) {
+				Debug.Log("[Save Manager] [Sql] File not found, creating");
+				createDirectorSchema(saveNum);
+				yield return null;
+				SqliteConnection.CreateFile(Path.Combine(globalPath, "data.db"));
+				Debug.Log("[Save Manager] [Sql] File created");
+			}
+			yield return null;
 			using (var conn = new SqliteConnection(dbPath)) {
 				conn.Open();
 				Debug.Log("[Save Manager] [Sql] Connection opened");
@@ -134,7 +161,10 @@ namespace JLG.gift.cSharp.SystemData {
 			Debug.Log("[Save Manager] [Sql] reading from database for scene table \"" + scene + "\"");
 			Debug.Log("[Save Manager] [Sql] creating Schema for table");
 			//createSceneSchema(scene);
-			while (createSceneSchemaTask(scene).MoveNext()) {
+			//while (createSceneSchemaTask(scene).MoveNext()) {
+			//	yield return null;
+			//}
+			foreach (var a in createSceneSchemaTask(scene)) {
 				yield return null;
 			}
 			using (var conn = new SqliteConnection(dbPath)) {
@@ -210,14 +240,17 @@ namespace JLG.gift.cSharp.SystemData {
 			Debug.Log("[Save Manager] [Sql] Table updated");
 		}
 
-		public void updateSceneTableAsync(string scene, SceneObjectData[] data) {
-			AsyncHandler.instance.startAsyncTask(updateSceneTableTask(scene, data));
+		public void updateSceneTableAsync(string scene, SceneObjectData[] data, Action onComplete) {
+			AsyncHandler.instance.startAsyncTask(updateSceneTableTask(scene, data, onComplete));
 		}
 
-		IEnumerator updateSceneTableTask(string scene, SceneObjectData[] data) {
+		IEnumerator updateSceneTableTask(string scene, SceneObjectData[] data, Action onComplete) {
 			Debug.Log("[Save Manager] [Sql] updating database for scene table \"" + scene + "\"");
 			Debug.Log("[Save Manager] [Sql] creating Schema for table");
-			while (createSceneSchemaTask(scene).MoveNext()) {
+			//while (createSceneSchemaTask(scene).MoveNext()) {
+			//	yield return null;
+			//}
+			foreach (var a in createSceneSchemaTask(scene)) {
 				yield return null;
 			}
 			using (var conn = new SqliteConnection(dbPath)) {
@@ -260,23 +293,27 @@ namespace JLG.gift.cSharp.SystemData {
 				}
 			}
 			Debug.Log("[Save Manager] [Sql] Table updated");
+			onComplete();
 		}
 
-		//json side
-		public readonly string PlayerJsonPath = "playerData.json";
-		public readonly string SettingJsonPath = "settings.json";
+		/////////////
+		//json side//
+		/////////////
+		public static readonly string PlayerJsonPath = "playerData.json";
+		public static readonly string SettingJsonPath = "settings.json";
 
-		public void JsonSaveDataAsync(Action onFinish, string file) {
+		public void JsonSaveDataAsync(Action onFinish, string file, object obj) {
 			Debug.Log("[Save Manager] [Json] Saving " + file + " with Async");
 			//temp_saveNum = saveNum;
 			this.act = onFinish;
-			AsyncHandler.instance.startAsyncTask(saveDataCo(file));
+			AsyncHandler.instance.startAsyncTask(saveDataCo(file, obj));
 		}
 
-		void JsonSaveDirect(string file) {
+		void JsonSaveDirect(string file, object obj) {
 			Debug.Log("[Save Manager] [Json] Saving " + file + " without Async");
+			createDirectorSchema(saveNum);
 			string path = Path.Combine(globalPath, file);
-			string rawJson = JsonUtility.ToJson(this);
+			string rawJson = JsonUtility.ToJson(obj);
 			using (StreamWriter writer = File.CreateText(path)) {
 				writer.Write(rawJson);
 			}
@@ -289,10 +326,11 @@ namespace JLG.gift.cSharp.SystemData {
 		//byte temp_saveNum;
 		Action act;
 
-		IEnumerator saveDataCo(string file) {
+		IEnumerator saveDataCo(string file, object obj) {
 			Debug.Log("[Save Manager] [Json] started Async Task");
+			createDirectorSchema(saveNum);
 			string path = Path.Combine(globalPath, file);
-			string rawJson = JsonUtility.ToJson(this);
+			string rawJson = JsonUtility.ToJson(obj);
 			yield return null;
 			using (StreamWriter writer = File.CreateText(path)) {
 				writer.Write(rawJson);
@@ -315,7 +353,7 @@ namespace JLG.gift.cSharp.SystemData {
 			string path = Path.Combine(globalPath, file);
 
 			if (!doesJsonSaveExist(file)) {
-				Debug.LogError("[Save Manager] [Json] [ERROR] file " + file + "failed to load, FileNotFoundException");
+				Debug.LogError("[Save Manager] [Json] [ERROR] file " + file + " failed to load, FileNotFoundException");
 				throw new FileNotFoundException(file);
 			}
 

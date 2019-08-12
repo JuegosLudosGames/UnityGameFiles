@@ -1,5 +1,7 @@
 ﻿using JLG.gift.cSharp.background.scene;
 using JLG.gift.cSharp.background.scene.background;
+using JLG.gift.cSharp.background.sound;
+using JLG.gift.cSharp.background.video;
 using JLG.gift.cSharp.entity.player.data;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +29,9 @@ namespace JLG.gift.cSharp.enviroment.interactble {
 			SceneBackground.instance.putSaveIcon(true);
 			SceneData sd = SceneController.currentScene.getSceneData();
 			sd.SavePointId = id;
-			new SaveData(PlayerData.instance, sd).saveDataAsync(1, onSaveComplete);
+			//new SaveData(PlayerData.instance, sd).saveDataAsync(1, onSaveComplete);
+
+			SystemData.SystemData.loadData.SaveToFileAsync(PlayerData.instance, sd, SoundOptions.instance, VideoOptions.instance, onSaveComplete);
 		}
 
 		void onSaveComplete() {

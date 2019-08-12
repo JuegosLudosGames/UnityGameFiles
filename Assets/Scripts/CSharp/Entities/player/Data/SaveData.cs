@@ -10,6 +10,7 @@ using JLG.gift.cSharp.background.scene.background;
 using JLG.gift.cSharp.background.scene;
 
 namespace JLG.gift.cSharp.entity.player.data {
+	[Obsolete("Use SystemData", true)]
 	[Serializable]
 	public class SaveData {
 

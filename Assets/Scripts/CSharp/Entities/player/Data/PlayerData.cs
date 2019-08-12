@@ -5,6 +5,7 @@ using UnityEngine;
 using JLG.gift.cSharp.inventory;
 using JLG.gift.cSharp.background.input;
 using JLG.gift.cSharp.buildData;
+using JLG.gift.cSharp.SystemData;
 
 namespace JLG.gift.cSharp.entity.player.data {
 	public class PlayerData : MonoBehaviour {
@@ -62,24 +63,28 @@ namespace JLG.gift.cSharp.entity.player.data {
 		}
 
 		private void Update() {
-			if(isinit)
+			if (isinit) {
 				inventory.updateInv();
+			}
 		}
 
 		public IEnumerable startLoad() {
-			SaveData sd = SaveData.loadedSave;
-			inventory = sd.Inventory;
+			//SaveData sd = SaveData.loadedSave;
+			SystemData.SystemData sd = SystemData.SystemData.loadData;
+			//inventory = sd.Inventory;
+			inventory = sd.playerDat.Inventory;
 			yield return null;
-			keybinding = sd.Keybinding;
+			//keybinding = sd.Keybinding;
+			keybinding = sd.settingsData.SerializedkeyBindings;
 			yield return null;
 			KeyInput.LoadKeySet(keybinding);
 			yield return null;
-			buildData = BuildData.getDataFromId(sd.buildId);
+			buildData = BuildData.getDataFromId(sd.playerDat.BuildId);
 			yield return null;
-			strengthInc = sd.StrengthLevelIncrease;
-			spellInc = sd.SpellStrengthLevelIncrease;
-			maxHealthAdd = sd.MaxHealth;
-			maxManaAdd = sd.MaxMana;
+			strengthInc = sd.playerDat.StrengthLevelIncrease;
+			spellInc = sd.playerDat.SpellStrengthLevelIncrease;
+			maxHealthAdd = sd.playerDat.MaxHealth;
+			maxManaAdd = sd.playerDat.MaxMana;
 			isinit = true;
 		}
 
