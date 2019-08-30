@@ -8,6 +8,7 @@ using JLG.gift.cSharp.entity.player.data;
 using JLG.gift.cSharp.buildData;
 using JLG.gift.cSharp.SystemData;
 using JLG.gift.cSharp.background.video;
+using JLG.gift.cSharp.background.sound;
 
 namespace JLG.gift.cSharp.background.scene.background {
 	public class SceneBackground : MonoBehaviour {
@@ -104,6 +105,19 @@ namespace JLG.gift.cSharp.background.scene.background {
 			foreach (var a in PlayerData.instance.startLoad()) {
 				yield return null;
 			}
+
+			//Video Load
+			VideoOptions.instance.targetFps = SystemData.SystemData.loadData.settingsData.targetFPS;
+			VideoOptions.instance.displayFps = SystemData.SystemData.loadData.settingsData.displayFPS;
+			yield return null;
+
+			//Audio Load
+			SoundOptions.instance.MasterVolume = SystemData.SystemData.loadData.settingsData.MVolume;
+			SoundOptions.instance.MusicVolume = SystemData.SystemData.loadData.settingsData.MuVolume;
+			SoundOptions.instance.SfxVolume = SystemData.SystemData.loadData.settingsData.SFXVolume;
+			yield return null;
+			SoundOptions.instance.Mute(SoundOptions.SoundType.MUSIC, SystemData.SystemData.loadData.settingsData.MuMute);
+			SoundOptions.instance.Mute(SoundOptions.SoundType.SFX, SystemData.SystemData.loadData.settingsData.SFXMute);
 
 			SceneSaveData.loadSceneDataAsync(onSceneLoadComplete, SystemData.SystemData.loadData.playerDat.sceneId);
 			//saveSceneData = SaveData.loadedSave.scene;

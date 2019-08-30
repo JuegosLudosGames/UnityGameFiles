@@ -77,5 +77,9 @@ namespace JLG.gift.cSharp.background.scene {
 			return sceneData;
 		}
 
+		public void updateSettings() {
+			Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		}
+
 	}
 }
