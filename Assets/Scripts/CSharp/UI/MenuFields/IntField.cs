@@ -19,6 +19,14 @@ namespace JLG.gift.cSharp.ui.menuField {
 			typeField.text = value.ToString();
 		}
 
+		public void updateValue() {
+			string value = typeField.text;
+			int a = currentValue;
+			if (!int.TryParse(value, out a))
+				a = currentValue;
+			setStartValue(a);
+		}
+
 		public void onClickUp() {
 			setStartValue(currentValue + 1);
 		}

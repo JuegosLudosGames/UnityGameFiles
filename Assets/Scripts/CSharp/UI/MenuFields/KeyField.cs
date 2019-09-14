@@ -21,6 +21,7 @@ namespace JLG.gift.cSharp.ui.menuField {
 				foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode))) {
 					if (Input.GetKeyDown(kcode)) {
 						setStartValue(kcode);
+						isSearching = false;
 					}	
 				}
 

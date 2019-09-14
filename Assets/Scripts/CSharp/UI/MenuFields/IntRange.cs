@@ -20,7 +20,7 @@ namespace JLG.gift.cSharp.ui.menuField {
 			currentValue = value;
 			slider.value = value / max;
 		}
-
+		
 		public void onValueChange() {
 			currentValue = (int)(100f * (slider.value));
 		}

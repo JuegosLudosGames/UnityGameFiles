@@ -42,7 +42,8 @@ namespace JLG.gift.cSharp.background.scene {
 			goToMain();
 			delConfirm.SetActive(false);
 			overConfirm.SetActive(false);
-			SceneManager.LoadSceneAsync("BackgroundScene", LoadSceneMode.Additive); 
+			if (SceneBackground.instance == null)
+				SceneManager.LoadSceneAsync("BackgroundScene", LoadSceneMode.Additive);
 		}
 
 		//main Screen

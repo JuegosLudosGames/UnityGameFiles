@@ -46,6 +46,18 @@ namespace JLG.gift.cSharp.background.video {
 			}
 		}
 
+		[SerializeField]
+		private bool vsync = true;
+		public bool VSync {
+			get {
+				return vsync;
+			}
+			set {
+				vsync = value;
+				QualitySettings.vSyncCount = vsync ? 1 : 0;
+			}
+		}
+
 		// Start is called before the first frame update
 		void Start() {
 			instance = this;
@@ -53,6 +65,7 @@ namespace JLG.gift.cSharp.background.video {
 			FpsCount.gameObject.SetActive(DisplayFps);
 			timeLeft = timeInterval;
 			timeLeftAv = timeIntervalAv;
+			displayFps = false;
 		}
 
 		private void OnGUI() {
@@ -79,24 +92,48 @@ namespace JLG.gift.cSharp.background.video {
 				//update min info if time up
 				if (timeLeft <= 0.0f) {
 
-					//calculate min frames
-					prevCount = Mathf.RoundToInt((float)frames / accum);
-					timeLeft = timeInterval;
-					accum = 0;
-					frames = 0;
-					//formate text
-					string format = System.String.Format("FPS:{0}/{1}({2}%)", prevCountAv, prevCount, Mathf.RoundToInt(((float)prevCountAv / (float)targetFps) * 100.0f));
+					if (!vsync) {
 
-					//change color
-					if (prevCountAv <= (targetFps / 6)) {
-						FpsCount.color = Color.red;
-					} else if (prevCountAv <= (targetFps / 2)) {
-						FpsCount.color = Color.yellow;
+						//calculate min frames
+						prevCount = Mathf.RoundToInt((float)frames / accum);
+						timeLeft = timeInterval;
+						accum = 0;
+						frames = 0;
+						//formate text
+						string format = System.String.Format("FPS:{0}/{1}({2}%)", prevCountAv, prevCount, Mathf.RoundToInt(((float)prevCountAv / (float)targetFps) * 100.0f));
+
+						//change color
+						if (prevCountAv <= (targetFps / 6)) {
+							FpsCount.color = Color.red;
+						} else if (prevCountAv <= (targetFps / 2)) {
+							FpsCount.color = Color.yellow;
+						} else {
+							FpsCount.color = Color.green;
+						}
+
+						FpsCount.text = format;
 					} else {
-						FpsCount.color = Color.green;
-					}
 
-					FpsCount.text = format;
+						//calculate min frames
+						prevCount = Mathf.RoundToInt((float)frames / accum);
+						timeLeft = timeInterval;
+						accum = 0;
+						frames = 0;
+
+						string format = System.String.Format("FPS:{0}/{1} Vsync on", prevCountAv, prevCount);
+
+						//change color
+						if (prevCountAv <= 25) {
+							FpsCount.color = Color.red;
+						} else if (prevCountAv <= 10) {
+							FpsCount.color = Color.yellow;
+						} else {
+							FpsCount.color = Color.green;
+						}
+
+						FpsCount.text = format;
+
+					}
 				}
 			}
 		}
