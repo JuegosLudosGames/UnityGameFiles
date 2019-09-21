@@ -47,8 +47,17 @@ namespace JLG.gift.cSharp.entity {
 		[Header("Logic and Physics")]
 		[Header("	Derived from Entity")]
 		public bool isEnabled = true;       //should let the object work
+		public float SmoothingX = 0.15f;    //smoothing amount for X axis
 		public float verticalDrag = 0.95f;  //Vertical drag option of entity
 		public float horizontalDrag = 0.5f; //horiznal drag option of entity
+		public LayerMask whatIsGround;
+		public float groundedRadius = 0.2f;
+		public Transform[] groundChecks;
+		public EntityWallState walled = EntityWallState.NONE;
+		public LayerMask whatIsWall;
+		public float walledRadius = 0.2f;
+		public Transform[] wallCheckR;
+		public Transform[] wallCheckL;
 
 		[Header("Control")]
 		public float maxHeight = 5.0f;      //max height of entity
@@ -84,6 +93,8 @@ namespace JLG.gift.cSharp.entity {
 		public bool continueLookingdir {
 			get; set;
 		}
+
+		private Vector2 m_Velocity = Vector2.zero; //reference for movement
 
 		// Start is called before the first frame update
 		void Start() {
@@ -142,8 +153,10 @@ namespace JLG.gift.cSharp.entity {
 			}
 
 			//does sound updates
-			if(SoundOptions.instance != null)
+			if (SoundOptions.instance != null) {
+				AudioS.volume = SoundOptions.instance.SfxVolume / 100;
 				AudioS.mute = SoundOptions.instance.sfxMute;
+			}
 
 			//does early update actions of entity
 			onEarlyUpdate();
@@ -169,12 +182,23 @@ namespace JLG.gift.cSharp.entity {
 			//does update for all entities
 			//move the entity
 			Vector2 newVel = new Vector2();
-			newVel.x = (movementX == 0) ? rb.velocity.x : movementX;
-			newVel.y = (forceY == 0) ? rb.velocity.y : forceY;
+			Vector2 newVelx = new Vector2();
+			Vector2 newVely = new Vector2();
+			newVelx.x = (movementX == 0) ? rb.velocity.x : movementX;
+			newVely.y = (forceY == 0) ? rb.velocity.y : forceY;
 			forceY = 0;
 
 			//sets new velocity
+			//rb.velocity = newVel;
+			newVelx = Vector2.SmoothDamp(rb.velocity, newVelx, ref m_Velocity, SmoothingX);
+			//newVely = Vector2.SmoothDamp(rb.velocity, newVely, ref m_Velocity, SmoothingY);
+
+			newVel.x = newVelx.x;
+			newVel.y = newVely.y;
 			rb.velocity = newVel;
+
+			//newVel.y = vely;
+			//rb.velocity = newVel;
 
 			//checks and flips entity to facing direction
 			if (!continueLookingdir) {
@@ -185,8 +209,10 @@ namespace JLG.gift.cSharp.entity {
 				}
 			}
 
+			movementX = 0;
+
 			//animates entity
-			if (newVel.x != 0) {
+			if (Mathf.Abs(newVel.x) >= 0.5f) {
 				modelAnimator.SetBool("isRunning", true);
 			} else {
 				modelAnimator.SetBool("isRunning", false);
@@ -203,6 +229,10 @@ namespace JLG.gift.cSharp.entity {
 			//if entity is not enabled, skips
 			if (!isEnabled)
 				return;
+
+			//does the ground check for entity
+			checkGrounded();
+
 			//sets drag to entity
 			Vector2 newVel = new Vector2(rb.velocity.x, rb.velocity.y);
 
@@ -450,7 +480,7 @@ namespace JLG.gift.cSharp.entity {
 
 		//moves entity in the x direction with set velocity
 		protected void movex(float movement) {
-			movementX = movement;
+			movementX += movement;
 		}
 
 		//allows entity to jump with force
@@ -459,6 +489,17 @@ namespace JLG.gift.cSharp.entity {
 				forceY = force;
 				grounded = false;
 			} 
+		}
+
+		protected void jumpWall(Vector2 force) {
+			forceY = force.y;
+			movementX += force.x;
+			walled = EntityWallState.NONE;
+		}
+
+		protected void jumpWallBoth(float force) {
+			forceY = force;
+			walled = EntityWallState.NONE;
 		}
 
 		//checks if entity is looking in the direction of the position
@@ -501,24 +542,83 @@ namespace JLG.gift.cSharp.entity {
 			return transform.localScale.x > 0;
 		}
 
-		private void OnCollisionStay2D(Collision2D collision) {
-			//on ground? ground it
-			if (collision.gameObject.layer == 9)
-				grounded = true;
+		//checks if the entity is on the ground
+		private void checkGrounded() {
+
+			//creates list for grounds
+			List<Collider2D> grounds = new List<Collider2D>();
+
+			//gets the grounds on all checks
+			foreach (Transform t in groundChecks) {
+				Collider2D[] g = Physics2D.OverlapCircleAll(t.position, groundedRadius, whatIsGround);
+				//adds to end of list
+				grounds.AddRange(g);
+			}
+
+			//checks if valid and if so grounds
+			foreach (Collider2D c in grounds) {
+				if (c.gameObject != gameObject) {
+					grounded = true;
+					return;
+				}
+			}
+			grounded = false;
+
 		}
 
-		private void OnCollisionEnter2D(Collision2D collision) {
-			//on ground? ground it
-			if (collision.gameObject.layer == 9)
-				grounded = true;
+		protected void checkWalled() {
+
+			//creates list for walls
+			List<Collider2D> wallsR = new List<Collider2D>();
+
+			//gets the walls on all checks for the Right
+			foreach (Transform t in wallCheckR) {
+				Collider2D[] w = Physics2D.OverlapCircleAll(t.position, walledRadius, whatIsWall);
+				//adds to end of list
+				wallsR.AddRange(w);
+			}
+
+			bool wallR = false;
+
+			//checks if valid and if so grounds
+			foreach (Collider2D c in wallsR) {
+				if (c.gameObject != gameObject) {
+					wallR = true;
+				}
+			}
+
+			//creates list for walls for Left
+			List<Collider2D> wallsL = new List<Collider2D>();
+
+			//gets the walls on all checks for the Right
+			foreach (Transform t in wallCheckL) {
+				Collider2D[] w = Physics2D.OverlapCircleAll(t.position, walledRadius, whatIsWall);
+				//adds to end of list
+				wallsL.AddRange(w);
+			}
+
+			bool wallL = false;
+
+			//checks if valid and if so grounds
+			foreach (Collider2D c in wallsL) {
+				if (c.gameObject != gameObject) {
+					wallL = true;
+				}
+			}
+
+			if (wallL && wallR)
+				walled = EntityWallState.BOTH;
+			else if (wallL)
+				walled = (isLookingInDirection(true))? EntityWallState.LEFT : EntityWallState.RIGHT;
+			else if (wallR)
+				walled = (isLookingInDirection(true)) ? EntityWallState.RIGHT : EntityWallState.LEFT;
+			else
+				walled = EntityWallState.NONE;
 		}
 
-		private void OnCollisionExit2D(Collision2D collision) {
-			//left ground? unground it
-			if (collision.gameObject.layer == 9)
-				grounded = false;
+		public enum EntityWallState {
+			NONE, LEFT, RIGHT, BOTH
 		}
-
 
 
 	}

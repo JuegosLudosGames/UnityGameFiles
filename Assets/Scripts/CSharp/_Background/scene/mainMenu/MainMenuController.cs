@@ -1,5 +1,6 @@
 ﻿using JLG.gift.cSharp.background.scene.background;
 using JLG.gift.cSharp.entity.player.data;
+using JLG.gift.cSharp.SystemData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,8 @@ namespace JLG.gift.cSharp.background.scene {
 			goToMain();
 			delConfirm.SetActive(false);
 			overConfirm.SetActive(false);
-			SceneManager.LoadSceneAsync("BackgroundScene", LoadSceneMode.Additive); 
+			if (SceneBackground.instance == null)
+				SceneManager.LoadSceneAsync("BackgroundScene", LoadSceneMode.Additive);
 		}
 
 		//main Screen
@@ -89,7 +91,7 @@ namespace JLG.gift.cSharp.background.scene {
 		private void startGameAtBeg() {
 			Debug.Log("Starting new");
 			SceneBackground.instance.setBackgroundActive();
-			SceneBackground.instance.startNew();
+			SceneBackground.instance.startNew(toCon);
 		}
 
 		private void startGameAtLoad() {
@@ -98,16 +100,13 @@ namespace JLG.gift.cSharp.background.scene {
 			//SceneBackground.instance;
 			SceneBackground.instance.setBackgroundActive();
 			SceneBackground.instance.loadScreen.SetActive(true);
-			SaveData.loadDataAsync(toCon, onSaveDataLoadComplete);
-		}
-
-		void onSaveDataLoadComplete() {
-			SceneBackground.instance.startLoad();
+			//SaveData.loadDataAsync(toCon, onSaveDataLoadComplete);
+			SceneBackground.instance.startLoad(toCon);
 		}
 
 		public void updateSave() {
 
-			if (SaveData.doesSaveExist(1)) {
+			if (DataBaseIO.doesSaveExist(1)) {
 				slot1Button.GetComponent<Image>().color = fullColor;
 				slot1Button.GetComponentInChildren<Text>().text = "Slot 1: full";
 			} else {
@@ -115,7 +114,7 @@ namespace JLG.gift.cSharp.background.scene {
 				slot1Button.GetComponentInChildren<Text>().text = "Slot 1: empty";
 			}
 
-			if (SaveData.doesSaveExist(2)) {
+			if (DataBaseIO.doesSaveExist(2)) {
 				slot2Button.GetComponent<Image>().color = fullColor;
 				slot2Button.GetComponentInChildren<Text>().text = "Slot 2: full";
 			} else {
@@ -123,7 +122,7 @@ namespace JLG.gift.cSharp.background.scene {
 				slot2Button.GetComponentInChildren<Text>().text = "Slot 2: empty";
 			}
 
-			if (SaveData.doesSaveExist(3)) {
+			if (DataBaseIO.doesSaveExist(3)) {
 				slot3Button.GetComponent<Image>().color = fullColor;
 				slot3Button.GetComponentInChildren<Text>().text = "Slot 3: full";
 			} else {
@@ -141,20 +140,22 @@ namespace JLG.gift.cSharp.background.scene {
 
 		//level select Screen
 		public void onSaveSelect(int a) {
-			byte b = (byte) a;
+
+			byte b = (byte)a;
 
 			if (!isDeleting) {
 				if (isNewGame) {
-					if (SaveData.doesSaveExist(b)) {
+					if (DataBaseIO.doesSaveExist(b)) {
 						//start new 
 						toCon = b;
 						goToOverrideConfirm();
 					} else {
 						//SaveData.createNew(b);
+						toCon = b;
 						startGameAtBeg();
 					}
 				} else {
-					if (SaveData.doesSaveExist(b)) {
+					if (DataBaseIO.doesSaveExist(b)) {
 						toCon = b;
 						startGameAtLoad();
 					}
@@ -183,7 +184,7 @@ namespace JLG.gift.cSharp.background.scene {
 		byte toCon;
 
 		public void delYes() {
-			SaveData.deleteSave(toCon);
+			DataBaseIO.deleteSave(toCon);
 			delConfirm.SetActive(false);
 			goToSaveSel();
 		}
@@ -194,7 +195,7 @@ namespace JLG.gift.cSharp.background.scene {
 		}
 
 		public void overYes() {
-			SaveData.deleteSave(toCon);
+			DataBaseIO.deleteSave(toCon);
 			//SaveData.createNew(toCon);
 			overConfirm.SetActive(false);
 			startGameAtBeg();

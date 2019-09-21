@@ -10,6 +10,7 @@ using JLG.gift.cSharp.background.scene.background;
 using JLG.gift.cSharp.background.scene;
 
 namespace JLG.gift.cSharp.entity.player.data {
+	[Obsolete("Use SystemData", true)]
 	[Serializable]
 	public class SaveData {
 
@@ -70,14 +71,9 @@ namespace JLG.gift.cSharp.entity.player.data {
 		}
 
 		public void saveAndUnload(byte saveNum) {
-			//saveData(saveNum);
 			saveDataAsync(saveNum, unLoad);
 			unLoad();
 		}
-
-		//void onSaveFinish() {
-		//	unLoad();
-		//}
 
 		public void unLoad() {
 			loadedSave = null;

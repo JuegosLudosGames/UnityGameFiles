@@ -41,6 +41,7 @@ namespace JLG.gift.cSharp.background.scene {
 			if (SceneBackground.instance.loadSaveSceneData) {
 				SceneData d = SceneBackground.instance.saveSceneData;
 
+				
 				if (d.SavePointId < saveSpawns.Length) {
 					entity.Entity.player.transform.position = saveSpawns[d.SavePointId].transform.position;
 					GameObject.FindGameObjectWithTag("MainCamera").transform.position = saveSpawns[d.SavePointId].transform.position;
@@ -74,6 +75,10 @@ namespace JLG.gift.cSharp.background.scene {
 			}
 			sceneData.objectData = d.ToArray();
 			return sceneData;
+		}
+
+		public void updateSettings() {
+			Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 		}
 
 	}

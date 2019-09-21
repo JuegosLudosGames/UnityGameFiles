@@ -14,6 +14,7 @@ namespace JLG.gift.cSharp.background.input {
 		private static readonly string JUMP = "jump";
 		private static readonly string LEFT = "left";
 		private static readonly string RIGHT = "right";
+		private static readonly string DASH = "dash";
 		private static readonly string PHYSICAL = "physical";
 		private static readonly string MAGIC1 = "magic1";
 		private static readonly string MAGIC2 = "magic2";
@@ -44,6 +45,7 @@ namespace JLG.gift.cSharp.background.input {
 			addKey(JUMP, key.Jump_Button, d.Jump_Button, keyToKeyCode);
 			addKey(LEFT, key.Left_Button, d.Left_Button, keyToKeyCode);
 			addKey(RIGHT, key.Right_Button, d.Right_Button, keyToKeyCode);
+			addKey(DASH, key.Dash_Button, d.Dash_Button, keyToKeyCode);
 			addKey(PHYSICAL, key.Physical_Button, d.Physical_Button, keyToKeyCode);
 			addKey(MAGIC1, key.Magic1_Button, d.Magic1_Button, keyToKeyCode);
 			addKey(MAGIC2, key.Magic2_Button, d.Magic2_Button, keyToKeyCode);
@@ -93,6 +95,7 @@ namespace JLG.gift.cSharp.background.input {
 			KeyCode jump = key.tryToGet(JUMP, d.Jump_Button, keyToKeyCode);
 			KeyCode left = key.tryToGet(LEFT, d.Left_Button, keyToKeyCode);
 			KeyCode right = key.tryToGet(RIGHT, d.Right_Button, keyToKeyCode);
+			KeyCode dash = key.tryToGet(DASH, d.Dash_Button, keyToKeyCode);
 			KeyCode phy = key.tryToGet(PHYSICAL, d.Physical_Button, keyToKeyCode);
 			KeyCode magic1 = key.tryToGet(MAGIC1, d.Magic1_Button, keyToKeyCode);
 			KeyCode magic2 = key.tryToGet(MAGIC2, d.Magic2_Button, keyToKeyCode);
@@ -102,7 +105,7 @@ namespace JLG.gift.cSharp.background.input {
 			KeyCode inv = key.tryToGet(INVENTORY, d.InventoryToggle_Button, keyToKeyCode);
 
 			//returns keyinput
-			return new KeyInput(jump, left, right, phy, magic1, magic2, use, sleft, sright, inv);
+			return new KeyInput(jump, left, right, dash, phy, magic1, magic2, use, sleft, sright, inv);
 		}
 
 	}

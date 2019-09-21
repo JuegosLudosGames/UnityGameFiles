@@ -15,11 +15,20 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 		private bool showDebugCombat = false;
 		private bool showDebugBase = false;
 		private bool showPhysics = true;
+		private bool arrayOpenGround = false;
 		private bool showStats = true;
 		private bool showAttack = true;
 		private bool showAi = true;
 		private bool showAiPersonaData = false;
 		private bool showReferences = true;
+
+		private SerializedObject serializedobj;
+		private SerializedProperty groundc;
+
+		private void OnEnable() {
+			serializedobj = new SerializedObject(target);
+			groundc = serializedobj.FindProperty("groundChecks");
+		}
 
 		public override void OnInspectorGUI() {
 			//base.OnInspectorGUI();
@@ -112,6 +121,12 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 				e.horizontalDrag = EditorGUILayout.FloatField("Horizonal Drag", e.horizontalDrag);
 				e.verticalDrag = EditorGUILayout.FloatField("Vertical Drag", e.verticalDrag);
 				e.fallMultiplier = EditorGUILayout.FloatField("Fall Multiplier", e.fallMultiplier);
+				e.SmoothingX = EditorGUILayout.FloatField("Smoothing X", e.SmoothingX);
+				e.whatIsGround = EditorGUILayout.LayerField("Ground Layer", e.whatIsGround);
+				e.groundedRadius = EditorGUILayout.FloatField("Groundcheck radius", e.groundedRadius);
+
+				EditorGUILayout.PropertyField(groundc, new GUIContent("Ground check objects"), true);
+
 				EditorGUILayout.Space();
 
 				EditorGUI.indentLevel--;

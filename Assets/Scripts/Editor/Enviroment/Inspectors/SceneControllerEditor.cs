@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using JLG.gift.cSharp.background.scene;
 using JLG.gift.cSharp.enviroment.interactble;
+using UnityEditor.SceneManagement;
 
 namespace JLG.UnityEditor.cSharp.inspectors {
 	[CustomEditor(typeof(SceneController))]
@@ -29,6 +30,9 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 					sp[x].id = x;
 				}
 
+				EditorUtility.SetDirty(sc);
+				EditorSceneManager.MarkSceneDirty(sc.gameObject.scene);
+
 				Debug.Log("Finished");
 			}
 
@@ -43,6 +47,9 @@ namespace JLG.UnityEditor.cSharp.inspectors {
 				for (int x = 0; x < sp.Length; x++) {
 					sp[x].stateData.objectId = x;
 				}
+
+				EditorUtility.SetDirty(sc);
+				EditorSceneManager.MarkSceneDirty(sc.gameObject.scene);
 
 				Debug.Log("Finished");
 			}
