@@ -197,7 +197,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -1
   rolloffMode: 0
   BypassEffects: 1
   BypassListenerEffects: 1
@@ -536,6 +536,7 @@ MonoBehaviour:
   FpsCount: {fileID: 931669295}
   DisplayFps: 1
   TargetFrames: 60
+  vsync: 1
 --- !u!4 &438432244
 Transform:
   m_ObjectHideFlags: 0
@@ -584,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -141, y: -31.4}
+  m_AnchoredPosition: {x: -141, y: -31.400024}
   m_SizeDelta: {x: 111.5, y: 26.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &931669295

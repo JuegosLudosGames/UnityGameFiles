@@ -17,12 +17,14 @@ namespace JLG.gift.cSharp.entity.player {
 
 		[Header("Control")]
 		[Header("	Derived from Player")]
-		public float smoothingSpeed = 5.5f;		//speed for smoothing
+		//public float smoothingSpeed = 5.5f;		//speed for smoothing
+		public float DashSpeed = 50;
+		public float DashDelay = 3.0f;
 		public float fallMultiplier = 2.5f;		//speed multiuplier for falling
 		public float lowJumpMultiplier = 2f;    //slow multiplier for low jump
 		public CircleCollider2D pickupRange;
 		public float pickupRangeRadius = 0.75f;
-
+		public Vector2 wallJumpStrength;
 
 		[Header("Basic Attack")]
 		//low attack
@@ -39,6 +41,8 @@ namespace JLG.gift.cSharp.entity.player {
 		//info bars
 		private Slider health_bar;
 		private Slider mana_bar;
+
+		private float timeLeftDash = 0.0f;
 		//private GradualFader ind1;
 		//private GradualFader ind2;
 		private inventory.Inventory inventory;
@@ -65,6 +69,9 @@ namespace JLG.gift.cSharp.entity.player {
 		protected override void onEarlyUpdate() {
 
 			InventorySystem invSys = GameObject.FindGameObjectWithTag("InventorySystem").GetComponent<InventorySystem>();
+
+			if (timeLeftDash > 0)
+				timeLeftDash -= Time.deltaTime;
 
 			//checks to pickup items
 			//Pickupable[] pickups 
@@ -148,28 +155,45 @@ namespace JLG.gift.cSharp.entity.player {
 			//float forceY = 0.0f;
 
 			//checks if user is pressing keys for movement
-			if (Input.GetKeyDown(KeyInput.Right)) {
-				//move right
-				movementX = smoothingSpeed;
-			}
+			//if (Input.GetKeyDown(KeyInput.Right)) {
+			//	//move right
+			//	movementX = smoothingSpeed;
+			//}
 			if (Input.GetKey(KeyInput.Right)) {
 				//move right
-				movementX = speed;
+				if (Input.GetKeyDown(KeyInput.Dash) && timeLeftDash <= 0) {
+					movementX = DashSpeed;
+					timeLeftDash = DashDelay;
+				} else {
+					movementX = speed;
+				}
 			}
 
-			if (Input.GetKeyDown(KeyInput.Left)) {
-				//move left
-				movementX = -smoothingSpeed;
-			}
+			//if (Input.GetKeyDown(KeyInput.Left)) {
+			//	//move left
+			//	movementX = -smoothingSpeed;
+			//}
 			if (Input.GetKey(KeyInput.Left)) {
 				//move left
-				movementX = -speed;
+				if (Input.GetKeyDown(KeyInput.Dash) && timeLeftDash <= 0) {
+					movementX = -DashSpeed;
+					timeLeftDash = DashDelay;
+				} else {
+					movementX = -speed;
+				}
 			}
 			//jump
 			if (Input.GetKeyDown(KeyInput.Jump)) {
-				//move right
-				//forceY = jumpStrength;
-				jump(jumpStrength);
+				if (grounded)
+					jump(jumpStrength);
+				else if (walled == EntityWallState.LEFT)
+					jumpWall(new Vector2(wallJumpStrength.x, wallJumpStrength.y));
+				else if (walled == EntityWallState.RIGHT) {
+					jumpWall(new Vector2(-wallJumpStrength.x, wallJumpStrength.y));
+				} else if (walled == EntityWallState.BOTH) {
+					jumpWallBoth(jumpStrength);
+				}
+					
 			}
 
 			//set object to move
@@ -257,6 +281,11 @@ namespace JLG.gift.cSharp.entity.player {
 			//update bars
 			updateInfo();
 
+		}
+
+		protected override void onFixedUpdate() {
+			//check walls for Player
+			checkWalled();
 		}
 
 		protected override void death() {

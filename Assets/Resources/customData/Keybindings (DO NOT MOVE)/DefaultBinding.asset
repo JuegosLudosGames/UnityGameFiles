@@ -15,6 +15,7 @@ MonoBehaviour:
   Jump_Button: 119
   Left_Button: 97
   Right_Button: 100
+  Dash_Button: 32
   Physical_Button: 106
   Magic1_Button: 107
   Magic2_Button: 108

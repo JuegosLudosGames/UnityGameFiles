@@ -49,15 +49,15 @@ namespace JLG.gift.cSharp.background.sound {
 		//music manager
 		[SerializeField]
 		[Header("MusicManager")]
-		private AudioClip defaultMusic;
-		public AudioClip DefaultMusic { get { return defaultMusic; } }
+		private PlayableAsset defaultMusic;
+		public PlayableAsset DefaultMusic { get { return defaultMusic; } }
 		public float fadeTime;
 
 
 		private bool fadeIn = false;	//are we fading music in
 		private bool fadeOut = false;   //are we fading music out
 		private bool endTrackLoop = false;
-		private AudioClip sendTo;		//clip that wil be sent to after fade
+		private PlayableAsset sendTo;		//clip that wil be sent to after fade
 
 		private AudioSource source;     //source for background music
 		private PlayableDirector director;
@@ -68,11 +68,11 @@ namespace JLG.gift.cSharp.background.sound {
 			//gets the audio source
 			source = GetComponent<AudioSource>();
 			//set it to looping
-			source.loop = true;
+			source.loop = false;
 			//sets clip to default
-			source.clip = defaultMusic;
-			//plays the clip
-			source.Play();
+			//source.clip = defaultMusic;
+			////plays the clip
+			//source.Play();
 
 
 		}
@@ -84,16 +84,27 @@ namespace JLG.gift.cSharp.background.sound {
 				source.volume -= (1 / fadeTime) * Time.deltaTime;
 				//is fading done?
 				if (source.volume <= 0) {
+					//old
+					////stop fading
+					//fadeOut = false;
+					////stop clip change clip and play it
+					//source.Stop();
+					//source.clip = sendTo;
+					//source.Play();
+					////start fading in
+					//fadeIn = true;
+
+					//new
 					//stop fading
 					fadeOut = false;
 					//stop clip change clip and play it
-					source.Stop();
-					source.clip = sendTo;
-					source.Play();
+					director.Stop();
+					director.playableAsset = sendTo;
+					director.Play();
 					//start fading in
 					fadeIn = true;
 				}
-			//are we fading in
+				//are we fading in
 			} else if (fadeIn) {
 				//fade music
 				source.volume += (1 / fadeTime) * Time.deltaTime;
@@ -117,10 +128,14 @@ namespace JLG.gift.cSharp.background.sound {
 		}
 
 		//fades track for fading
-		public void setTrack(AudioClip sendTo) {
+		public void setTrack(PlayableAsset sendTo) {
 			this.sendTo = sendTo;
 			fadeOut = true;
 			fadeIn = false;
+		}
+
+		public void setTractDefault() {
+			setTrack(defaultMusic);
 		}
 
 		//sets mute status to a sound type
