@@ -264,8 +264,7 @@ namespace JLG.gift.cSharp.SystemData {
 						yield return null;
 						cmd.CommandType = CommandType.Text;
 
-						cmd.CommandText = "INSERT INTO '" + scene + "' (id, state) VALUES (@Id, @State) " +
-											" ON DUPLICATE KEY UPDATE state=@States; ";
+						cmd.CommandText = "INSERT INTO '" + scene + "' (id, state) VALUES (@Id, @State) ON CONFLICT(id) DO UPDATE SET state = @States; ";
 
 						SceneObjectData d = data[x];
 

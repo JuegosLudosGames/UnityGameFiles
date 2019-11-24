@@ -62,6 +62,13 @@ MonoBehaviour:
     m_Bits: 9
   groundedRadius: 0.2
   groundChecks: []
+  walled: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  walledRadius: 0.2
+  wallCheckR: []
+  wallCheckL: []
   maxHeight: 5
   speed: 12.5
   jumpStrength: 10.5
@@ -69,9 +76,6 @@ MonoBehaviour:
   maxHealth: 22.46
   hitBox: {fileID: 266128214305285499}
   maxMana: 10000
-  gr1: {fileID: 0}
-  gr2: {fileID: 0}
-  gr3: {fileID: 0}
   grounded: 0
   isDespawning: 0
   timeToDespawn: 0

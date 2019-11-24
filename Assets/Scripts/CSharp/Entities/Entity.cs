@@ -218,6 +218,8 @@ namespace JLG.gift.cSharp.entity {
 				modelAnimator.SetBool("isRunning", false);
 			}
 
+			modelAnimator.SetBool("isGrounded", grounded);
+
 			//does late update actions of entity
 			onLateUpdate();
 		}
@@ -376,6 +378,8 @@ namespace JLG.gift.cSharp.entity {
 		public virtual void damage(float damage) {
 			//remove from health
 			healthI -= damage;
+
+			modelAnimator.SetTrigger("Damaged");
 			//should it be dead?
 			if (health < 0) {
 				//kill it
@@ -488,7 +492,8 @@ namespace JLG.gift.cSharp.entity {
 			if(grounded && force != 0) {
 				forceY = force;
 				grounded = false;
-			} 
+			}
+			modelAnimator.SetTrigger("Jump");
 		}
 
 		protected void jumpWall(Vector2 force) {

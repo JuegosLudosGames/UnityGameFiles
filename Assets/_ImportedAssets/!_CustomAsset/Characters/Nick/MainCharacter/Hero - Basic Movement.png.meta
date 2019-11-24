@@ -1,0 +1,998 @@
+fileFormatVersion: 2
+guid: 881218b71818e01428ce8266d6a5bfe7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -669466331137004161
+    second: Hero - Basic Movement_0
+  - first:
+      213: -6198521245369315110
+    second: Hero - Basic Movement_1
+  - first:
+      213: -6179340183878763498
+    second: Hero - Basic Movement_2
+  - first:
+      213: -8717701088642146275
+    second: Hero - Basic Movement_3
+  - first:
+      213: 5622348467460754373
+    second: Hero - Basic Movement_4
+  - first:
+      213: 1547881185296241714
+    second: Hero - Basic Movement_5
+  - first:
+      213: 4249634010577646923
+    second: Hero - Basic Movement_6
+  - first:
+      213: -153664582578541969
+    second: Hero - Basic Movement_7
+  - first:
+      213: 5661763651247569534
+    second: Hero - Basic Movement_8
+  - first:
+      213: -64289927711911737
+    second: Hero - Basic Movement_9
+  - first:
+      213: -6431581504971300114
+    second: Hero - Basic Movement_10
+  - first:
+      213: -6986784867663664908
+    second: Hero - Basic Movement_11
+  - first:
+      213: -31266138813104846
+    second: Hero - Basic Movement_12
+  - first:
+      213: 6990463522077084322
+    second: Hero - Basic Movement_13
+  - first:
+      213: 5889550934745607365
+    second: Hero - Basic Movement_14
+  - first:
+      213: 7601469164647760832
+    second: Hero - Basic Movement_15
+  - first:
+      213: -3596295925004295666
+    second: Hero - Basic Movement_16
+  - first:
+      213: 3662358016155191120
+    second: Hero - Basic Movement_17
+  - first:
+      213: -8315346452371036762
+    second: Hero - Basic Movement_18
+  - first:
+      213: -7993347701358510370
+    second: Hero - Basic Movement_19
+  - first:
+      213: -5580249265190033003
+    second: Hero - Basic Movement_20
+  - first:
+      213: 8232159887077271219
+    second: Hero - Basic Movement_21
+  - first:
+      213: -147800025152935291
+    second: Hero - Basic Movement_22
+  - first:
+      213: 31875391061629925
+    second: Hero - Basic Movement_23
+  - first:
+      213: 7190347239284317465
+    second: Hero - Basic Movement_24
+  - first:
+      213: 4735219689198886544
+    second: Hero - Basic Movement_25
+  - first:
+      213: 6218877019383335799
+    second: Hero - Basic Movement_26
+  - first:
+      213: -1862832079762617775
+    second: Hero - Basic Movement_27
+  - first:
+      213: 7689415038916904817
+    second: Hero - Basic Movement_28
+  - first:
+      213: 8767194165714809510
+    second: Hero - Basic Movement_29
+  - first:
+      213: 2105406532246633522
+    second: Hero - Basic Movement_30
+  - first:
+      213: 6078318491236447611
+    second: Hero - Basic Movement_31
+  - first:
+      213: -5155522083240809237
+    second: Hero - Basic Movement_32
+  - first:
+      213: 8151692597938026717
+    second: Hero - Basic Movement_33
+  - first:
+      213: -7614112728809449761
+    second: Hero - Basic Movement_34
+  - first:
+      213: 2921435055345642284
+    second: Hero - Basic Movement_35
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero - Basic Movement_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1093
+        width: 142
+        height: 215
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ded0daf2a55ff46bd1a84d0fc4ea38
+      internalID: -669466331137004161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_1
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 1093
+        width: 143
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f98178258f7a86449e6022258b35662
+      internalID: -6198521245369315110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_2
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1093
+        width: 169
+        height: 207
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454a372f5b055c24bbb5d899306e9626
+      internalID: -6179340183878763498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_3
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1094
+        width: 198
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7862e26579fee144852e421be15950d
+      internalID: -8717701088642146275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_4
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 1126
+        width: 204
+        height: 212
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37e98c5f9f45ef84a8894439c6f87bde
+      internalID: 5622348467460754373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_5
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1095
+        width: 169
+        height: 216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bf508a6c06f9d4c82f94424a6a053b
+      internalID: 1547881185296241714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_6
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1092
+        width: 168
+        height: 208
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5dd36e3faa88d44bedc8a72c38202f
+      internalID: 4249634010577646923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_7
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 1094
+        width: 171
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709f65e703c43ab459f4af8c0a7cd895
+      internalID: -153664582578541969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_8
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1133
+        width: 183
+        height: 205
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d31d7ab2f30da246b5ff54828c50aaf
+      internalID: 5661763651247569534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_9
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 1092
+        width: 159
+        height: 219
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4592f855d23db1d448f951a0e31c1137
+      internalID: -64289927711911737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 827
+        width: 191
+        height: 165
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9096e1cf80229469ebece7c7bab432
+      internalID: -6431581504971300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 827
+        width: 141
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c4557b1467de64ab3a63f211d7bf71
+      internalID: -6986784867663664908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_12
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 840
+        width: 148
+        height: 225
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c9e57202f836c48ac17cbdfd7d9c69
+      internalID: -31266138813104846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_13
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 829
+        width: 151
+        height: 236
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b29de9633fd7674f9fc1d26d12043fe
+      internalID: 6990463522077084322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_14
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 868
+        width: 218
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 245231ae080f1ad4db4b201d80d9a65b
+      internalID: 5889550934745607365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_15
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 866
+        width: 198
+        height: 206
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174cf0deb2ac3e44897e75ea71fc10aa
+      internalID: 7601469164647760832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_16
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 826
+        width: 194
+        height: 193
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80faaa7334e54c84e8b60780e2447a59
+      internalID: -3596295925004295666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_17
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 829
+        width: 207
+        height: 157
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732f7f2c48a0fa44c94379d920d0189c
+      internalID: 3662358016155191120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_18
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 828
+        width: 175
+        height: 181
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128e8a186e057f74ea10b04c53672a81
+      internalID: -8315346452371036762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_19
+      rect:
+        serializedVersion: 2
+        x: 1841
+        y: 828
+        width: 174
+        height: 181
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2878dceeb868aea4d895a2462121f8d1
+      internalID: -7993347701358510370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_20
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 580
+        width: 221
+        height: 219
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b2ec8edf4521c408092dfb913349f4
+      internalID: -5580249265190033003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_21
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 605
+        width: 229
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fa58b22b2664b408c5d0040c8e6e14
+      internalID: 8232159887077271219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_22
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 578
+        width: 229
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83efd0b66ed79534182349d2e7d7a533
+      internalID: -147800025152935291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_23
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 557
+        width: 161
+        height: 262
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bfa62aac6f195418ae88130866b826
+      internalID: 31875391061629925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_24
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 563
+        width: 199
+        height: 221
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a21b54bc4ad64546b0d587661f630c3
+      internalID: 7190347239284317465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_25
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 575
+        width: 215
+        height: 216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025168e021196a94fb5c8f5346962b7d
+      internalID: 4735219689198886544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_26
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 567
+        width: 209
+        height: 158
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939ddf9932a3bd649ba63fcf5d2f016c
+      internalID: 6218877019383335799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_27
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 560
+        width: 256
+        height: 133
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46412eeece61a53439dd6fc36ab19cc3
+      internalID: -1862832079762617775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_28
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 263
+        width: 146
+        height: 200
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e06f4638e0616c439b1477172cab616
+      internalID: 7689415038916904817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_29
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 264
+        width: 153
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef3c5dd7066c8748ba2610276403f66
+      internalID: 8767194165714809510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_30
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 265
+        width: 199
+        height: 228
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf744ca6d21b8a449a7e92d3d53aadd
+      internalID: 2105406532246633522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_31
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 263
+        width: 140
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c23765d2198b4ed4b949451611b84881
+      internalID: 6078318491236447611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_32
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 265
+        width: 155
+        height: 234
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1ae260835ebc448ad537ae7039ed65
+      internalID: -5155522083240809237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_33
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 264
+        width: 163
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9572f42e7077d0d4185733f81e2d3ab2
+      internalID: 8151692597938026717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_34
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 264
+        width: 192
+        height: 214
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95da7c7c36778f4d827b3d2c227fada
+      internalID: -7614112728809449761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero - Basic Movement_35
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 264
+        width: 192
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d52ab0cf9e2fc4486192f5d31a23b6
+      internalID: 2921435055345642284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4709644de234f874493e4252c86031cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

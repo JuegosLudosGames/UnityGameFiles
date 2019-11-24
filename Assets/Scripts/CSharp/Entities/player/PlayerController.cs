@@ -262,7 +262,9 @@ namespace JLG.gift.cSharp.entity.player {
 						refillMana(i.ManaRefill);
 					} else if (inventory.getItemInSlot(slot).item is SpellStaffItem) {
 						shoot(its, spellDamAdd, spellDamMulti, spellSpeed);
-					}
+					} else if (its.item is ScriptItem) {
+						((ScriptItem)its.item).script.Invoke(this, its);
+					} 
 				} 
 			}
 
@@ -378,6 +380,10 @@ namespace JLG.gift.cSharp.entity.player {
 				mana = maxMana;
 			health = maxHealth;
 			mana = maxMana;
+		}
+
+		public void cooldownOnHeldItem(float delay, ItemStack i) {
+			i.cooldownSet(delay, delay);
 		}
 
 	}
