@@ -36,15 +36,12 @@ namespace JLG.gift.cSharp.entity.player {
 		public Spell firstM;
 		[Header("Second magic")]
 		public Spell secondM;
-		//public GameObject spellPre;
 
 		//info bars
 		private Slider health_bar;
 		private Slider mana_bar;
 
 		private float timeLeftDash = 0.0f;
-		//private GradualFader ind1;
-		//private GradualFader ind2;
 		private inventory.Inventory inventory;
 		private PlayerData pd;
 
@@ -56,8 +53,6 @@ namespace JLG.gift.cSharp.entity.player {
 		protected override void onStart() {
 			health_bar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
 			mana_bar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<Slider>();
-			//ind1 = GameObject.FindGameObjectWithTag("Spell1Ind").GetComponent<GradualFader>();
-			//ind2 = GameObject.FindGameObjectWithTag("Spell2Ind").GetComponent<GradualFader>();
 			pickupRange.radius = pickupRangeRadius;
 			inventory = PlayerData.instance.inventory;
 			pd = PlayerData.instance;
@@ -74,7 +69,6 @@ namespace JLG.gift.cSharp.entity.player {
 				timeLeftDash -= Time.deltaTime;
 
 			//checks to pickup items
-			//Pickupable[] pickups 
 			List<Pickupable> picks = getItemsInArea();
 			if (picks.Capacity > 0) {
 				foreach(Pickupable p in picks) {
@@ -83,9 +77,6 @@ namespace JLG.gift.cSharp.entity.player {
 
 					if (slot != -1) {
 						ItemStack item = p.pickup();
-						//inventory.placeInFirstAvaliable(new ItemStack(item, 1));
-						//GameObject.FindGameObjectWithTag("InventorySystem").GetComponent<InventorySystem>().placeItem(slot, item);
-						//ItemStack st = new ItemStack(item, 1);
 						inventory.mergeSlots(slot, item);
 						invSys.merge(slot, item);
 					} else {
@@ -110,27 +101,10 @@ namespace JLG.gift.cSharp.entity.player {
 			float walkSpeedM = assStat[4];
 			float attackSpeed = assStat[2];
 			float spellSpeed = assStat[3];
-			//newH += assStat[10];
 			float newHM = assStat[9];
-			//newM += assStat[8];
 			float newMM = assStat[7];
 
 			updateStatData(assStat);
-
-			
-			////sets health and mana
-			//maxHealth = newH;
-			//maxHealth *= newHM;
-			//if (health > maxHealth)
-			//	//damage(health - maxHealth);
-			//	health = maxHealth;
-			//maxMana = newM;
-			//maxMana *= newMM;
-			//if (mana > maxMana)
-			//	//damage(maxMana - mana);
-			//	mana = maxMana;
-
-			//Debug.Log("max " + maxHealth + " with " + health + " new" + newH + " and " + newHM);
 
 			InvItem sel = invSys.getSelectedItem();
 			if (!(sel is null)) {
@@ -152,13 +126,8 @@ namespace JLG.gift.cSharp.entity.player {
 			//amount of movement in x direction
 			float movementX = 0.0f;
 			//amount of force to push character in y direction
-			//float forceY = 0.0f;
 
 			//checks if user is pressing keys for movement
-			//if (Input.GetKeyDown(KeyInput.Right)) {
-			//	//move right
-			//	movementX = smoothingSpeed;
-			//}
 			if (Input.GetKey(KeyInput.Right)) {
 				//move right
 				if (Input.GetKeyDown(KeyInput.Dash) && timeLeftDash <= 0) {
@@ -169,10 +138,6 @@ namespace JLG.gift.cSharp.entity.player {
 				}
 			}
 
-			//if (Input.GetKeyDown(KeyInput.Left)) {
-			//	//move left
-			//	movementX = -smoothingSpeed;
-			//}
 			if (Input.GetKey(KeyInput.Left)) {
 				//move left
 				if (Input.GetKeyDown(KeyInput.Dash) && timeLeftDash <= 0) {
@@ -209,24 +174,6 @@ namespace JLG.gift.cSharp.entity.player {
 					interactAll();
 				}
 			}
-
-			//first attack magic
-			//if (Input.GetKeyDown(KeyInput.Magic1)) {
-			//	if (shouldShoot(firstM, 1)) {
-			//		shoot(firstM, 1, spellDamAdd, spellDamMulti, spellSpeed);
-			//		modelAnimator.SetTrigger("Magic");
-			//		//Debug.Log("shooting");
-			//	}
-			//}
-
-			//if (Input.GetKeyDown(KeyInput.Magic2)) {
-			//	if (shouldShoot(secondM, 2)) {
-			//		shoot(secondM, 2, spellDamAdd, spellDamMulti, spellSpeed);
-			//		modelAnimator.SetTrigger("Magic");
-			//	}
-			//}
-
-
 
 			//check for items
 			//check if changing slot
@@ -298,8 +245,6 @@ namespace JLG.gift.cSharp.entity.player {
 		private void updateInfo() {
 			health_bar.value = health / maxHealth;
 			mana_bar.value = mana / maxMana;
-			//ind1.fill = 1- (timeBeforeNextSpell_1/firstM.Delay);
-			//ind2.fill = 1 - (timeBeforeNextSpell_2 / secondM.Delay);
 		}
 
 		private void interactAll() {
