@@ -1,5 +1,6 @@
 # UnityGameFiles
 Repo for Game files of PC game in JuegosLudosGames
+Project on hold until further notice
 Project currently unnamed
 
 By JuegosLudosGames
